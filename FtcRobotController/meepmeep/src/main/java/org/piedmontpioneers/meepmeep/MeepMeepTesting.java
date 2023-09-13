@@ -19,6 +19,7 @@ public class MeepMeepTesting {
                                 .build()
                 );
 
+        // TODO: Update MeepMeep when the new field comes out.
         meepMeep.setBackground(MeepMeep.Background.FIELD_POWERPLAY_OFFICIAL)
                 .setDarkMode(true)
                 .setBackgroundAlpha(0.95f)
