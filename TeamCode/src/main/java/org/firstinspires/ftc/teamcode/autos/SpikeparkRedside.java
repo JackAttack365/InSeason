@@ -16,7 +16,7 @@ public class SpikeparkRedside extends Auto{
         strafeLeft(idk);
         // Place spike
         strafeRight(idk);
-        moveRight(idk);
+        turnRight(idk);
         //place on board
         //park
 
