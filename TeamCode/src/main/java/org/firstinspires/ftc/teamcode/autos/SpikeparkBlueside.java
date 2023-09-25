@@ -1,6 +1,6 @@
 package org.firstinspires.ftc.teamcode.autos;
 
-public class PreSeasonAuto extends Auto{
+public class SpikeparkBlueside extends Auto{
     public int forward = 0;
     public int sRight = 0;
     public int  sLeft = 0;
@@ -16,7 +16,7 @@ public class PreSeasonAuto extends Auto{
     strafeRight(sRight);
     // Place spike
         strafeLeft(sLeft);
-//        moveLeft();
+        moveLeft(Side);
         //place on board
         //park
 

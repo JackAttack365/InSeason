@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode.autos;
 
 
 
-public class Autopath2 extends Auto{
+public class SpikeparkRedside extends Auto{
     public int idk = 0;
     @Override
     public void runOpMode() throws InterruptedException {

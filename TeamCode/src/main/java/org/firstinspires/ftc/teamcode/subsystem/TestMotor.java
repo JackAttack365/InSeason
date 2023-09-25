@@ -5,8 +5,6 @@ import com.qualcomm.robotcore.hardware.Servo;
 import org.firstinspires.ftc.teamcode.Config;
 
 public class TestMotor extends SubSystem {
-    private Servo trigger;
-    private DcMotor flywheel;
     private DcMotor intake;
     private DcMotor leftBackDrive;
     private DcMotor rightBackDrive;
@@ -26,8 +24,7 @@ public class TestMotor extends SubSystem {
         leftBackDrive = config.hardwareMap.get(DcMotor.class, Config.LEFT_BACK_DRIVE);
         rightBackDrive = config.hardwareMap.get(DcMotor.class, Config.RIGHT_BACK_DRIVE);
         intake = config.hardwareMap.get(DcMotor.class, Config.INTAKE_MOTOR);
-        flywheel = config.hardwareMap.get(DcMotor.class, Config.FLYWHEEL_MOTOR);
-        trigger= config.hardwareMap.get(Servo.class, Config.TRIGGER_MOTOR);
+
     }
 
     @Override
