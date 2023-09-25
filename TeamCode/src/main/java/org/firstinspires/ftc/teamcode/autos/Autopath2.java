@@ -1,10 +1,10 @@
 package org.firstinspires.ftc.teamcode.autos;
 
-public class PreSeasonAuto extends Auto{
-    public int forward = 0;
-    public int sRight = 0;
-    public int  sLeft = 0;
-    public int Side = 0;
+
+
+
+public class Autopath2 extends Auto{
+    public int idk = 0;
     @Override
     public void runOpMode() throws InterruptedException {
         initMotors();
@@ -12,11 +12,11 @@ public class PreSeasonAuto extends Auto{
         waitForStart();
         // TODO: Add movement times. Uncomment
 //        moveForward();
-    moveForward(forward);
-    strafeRight(sRight);
-    // Place spike
-        strafeLeft(sLeft);
-//        moveLeft();
+        moveForward(idk);
+        strafeLeft(idk);
+        // Place spike
+        strafeRight(idk);
+        moveRight(idk);
         //place on board
         //park
 
@@ -25,3 +25,4 @@ public class PreSeasonAuto extends Auto{
     }
 
 }
+
