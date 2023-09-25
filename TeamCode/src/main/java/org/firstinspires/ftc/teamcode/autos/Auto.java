@@ -10,9 +10,7 @@ public abstract class Auto extends LinearOpMode {
     protected DcMotor leftBackDrive;
     protected DcMotor rightFrontDrive;
     protected DcMotor rightBackDrive;
-    protected DcMotor turnTable;
-    protected DcMotor triggerMotor;
-    protected DcMotor flywheelMotor;
+
 
 
     // Initialize. Similar to SubSystem.init();
