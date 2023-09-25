@@ -27,6 +27,6 @@ public class cascadeLift extends SubSystem {
         if (config.gamePad1.b) {
             lift.setPower(0.5);
         }
-
+//updating
     }
 }
