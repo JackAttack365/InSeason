@@ -22,9 +22,13 @@ public class Intake extends SubSystem {
     public void update() {
         if(config.gamePad1.y) {
             intake.setPower(1);
-        } else {
-            intake.setPower(0.5);
         }
-
+        else if(config.gamePad1.x) {
+            intake.setPower(-0.5);
+        }
+        else if(config.gamePad1.right_bumper) {
+            intake.setPower(0);
+        }
     }
+
 }
