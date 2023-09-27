@@ -20,7 +20,7 @@ public class SpikeparkRedside extends Auto{
         strafeLeft(sRightLeft);
         // Place spike
         strafeRight(sLeftright2);
-        turnRight(side);
+        spinClockwise(side);
         //place on board
         //park
 
