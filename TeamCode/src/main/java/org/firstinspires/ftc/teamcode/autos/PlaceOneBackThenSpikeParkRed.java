@@ -11,6 +11,8 @@ public class PlaceOneBackThenSpikeParkRed extends Auto {
 
     @Override
     public void runOpMode() throws InterruptedException {
+        initMotors();
+
         waitForStart();
 
         strafeLeft(firstStrafeLeft);
