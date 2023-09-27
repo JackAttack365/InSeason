@@ -13,7 +13,6 @@ public class SpikeparkBlueside extends Auto{
         initMotors();
 
         waitForStart();
-        // TODO: Add movement times. Uncomment
 //        moveForward();
     moveForward(forward);
     strafeRight(sRightLeft);
