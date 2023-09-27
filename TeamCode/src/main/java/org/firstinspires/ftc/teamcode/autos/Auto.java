@@ -19,7 +19,14 @@ public abstract class Auto extends LinearOpMode {
         leftBackDrive = hardwareMap.get(DcMotor.class, Config.LEFT_BACK_DRIVE);
         rightFrontDrive = hardwareMap.get(DcMotor.class, Config.RIGHT_FRONT_DRIVE);
         rightBackDrive = hardwareMap.get(DcMotor.class, Config.RIGHT_BACK_DRIVE);
-        // TODO: Reverse motors as needed.
+
+        // Most robots need the motors on one side to be reversed to drive forward.
+        // When you first test your robot, push the left joystick forward
+        // and flip the direction ( FORWARD <-> REVERSE ) of any wheel that runs backwards
+        leftFrontDrive.setDirection(DcMotor.Direction.REVERSE); // DO NOT CHANGE
+        leftBackDrive.setDirection(DcMotor.Direction.REVERSE); // DO NOT CHANGE
+        rightFrontDrive.setDirection(DcMotor.Direction.FORWARD); // DO NOT CHANGE
+        rightBackDrive.setDirection(DcMotor.Direction.FORWARD); // DO NOT CHANGE
     }
         public void moveBackward(long milliseconds) {
         leftFrontDrive.setPower(-power);
