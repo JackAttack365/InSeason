@@ -4,7 +4,11 @@ package org.firstinspires.ftc.teamcode.autos;
 
 
 public class SpikeparkRedside extends Auto{
-    public int idk = 0;
+
+    public int forward = 2000;
+    public int sRightLeft = 800;
+    public int sLeftright2 = 4000;
+    public int side = 1000;
     @Override
     public void runOpMode() throws InterruptedException {
         initMotors();
@@ -12,11 +16,11 @@ public class SpikeparkRedside extends Auto{
         waitForStart();
         // TODO: Add movement times. Uncomment
 //        moveForward();
-        moveForward(idk);
-        strafeLeft(idk);
+        moveForward(forward);
+        strafeLeft(sRightLeft);
         // Place spike
-        strafeRight(idk);
-        turnRight(idk);
+        strafeRight(sLeftright2);
+        turnRight(side);
         //place on board
         //park
 
