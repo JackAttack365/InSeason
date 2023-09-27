@@ -1,6 +1,6 @@
 package org.firstinspires.ftc.teamcode.autos;
 
-public class PlaceOneBackThenSpikeParkRed extends Auto {
+public class BackSpikeParkRed extends Auto{
     public int firstStrafeLeft = 750;
     public int firstMoveBackward = 750;
     public int firstCounterClockwise = 1000;
@@ -8,6 +8,7 @@ public class PlaceOneBackThenSpikeParkRed extends Auto {
 
     @Override
     public void runOpMode() throws InterruptedException {
+        initMotors();
         waitForStart();
 
         strafeLeft(firstStrafeLeft);
