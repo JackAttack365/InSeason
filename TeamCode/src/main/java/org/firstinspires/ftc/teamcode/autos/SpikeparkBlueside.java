@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 public class SpikeparkBlueside extends Auto{
     public int forward = 1500;
     public int sRightLeft = 200;
-    public int sLeftright2 = 2000;
+    public int sLeftright2 = 1000;
     public int side = 200;
     @Override
     public void runOpMode() throws InterruptedException {
