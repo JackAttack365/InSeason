@@ -17,7 +17,7 @@ public class ManualRobot {
         config = cfg;
         // Register the subsystem. System will not work if it's not registered
         subSystems.add(new Drive(config));
-        subSystems.add(new Intake(config));
+        //subSystems.add(new Intake(config));
     }
 
     // Initialize each subsystem

@@ -1,8 +1,9 @@
 package org.firstinspires.ftc.teamcode.autos;
 
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
-
+@Autonomous(name="SpikeParkRed")
 public class SpikeparkRedside extends Auto{
 
     public int forward = 2000;
