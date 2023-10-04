@@ -37,6 +37,7 @@ public class Drive extends SubSystem {
         // POV Mode uses left joystick to go forward & strafe, and right joystick to rotate.
         double axial = -config.gamePad1.left_stick_y;  // Note: pushing stick forward gives negative value
         double lateral = config.gamePad1.left_stick_x;
+        // MUST BE INVERTED!
         double yaw = -config.gamePad1.right_stick_x;
         // Take the average of the 2 triggers
         double speed = 1 - (config.gamePad1.right_trigger + config.gamePad1.left_trigger) / 2;
