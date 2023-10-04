@@ -37,7 +37,7 @@ public class Drive extends SubSystem {
         // POV Mode uses left joystick to go forward & strafe, and right joystick to rotate.
         double axial = -config.gamePad1.left_stick_y;  // Note: pushing stick forward gives negative value
         double lateral = config.gamePad1.left_stick_x;
-        double yaw = config.gamePad1.right_stick_x;
+        double yaw = -config.gamePad1.right_stick_x;
         // Take the average of the 2 triggers
         double speed = 1 - (config.gamePad1.right_trigger + config.gamePad1.left_trigger) / 2;
 
@@ -73,5 +73,6 @@ public class Drive extends SubSystem {
         // Show the elapsed game time and wheel power.
         config.telemetry.addData("Front left/Right", "%4.2f, %4.2f", leftFrontPower, rightFrontPower);
         config.telemetry.addData("Back  left/Right", "%4.2f, %4.2f", leftBackPower, rightBackPower);
+        config.telemetry.addData("Right Stick x Position", "%4.2f", yaw);
     }
 }
