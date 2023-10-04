@@ -45,7 +45,7 @@ public class Drive extends SubSystem {
         // Set up a variable for each drive wheel to save the power level for telemetry.
         double leftFrontPower = (axial + lateral - yaw) * speed; // DO NOT CHANGE
         double rightFrontPower = (axial - lateral - yaw) * speed; // DO NOT CHANGE
-        double leftBackPower = (axial - lateral + yaw) * speed; // DO NOT CHANGE
+        double leftBackPower = (axial - lateral - yaw) * speed; // DO NOT CHANGE
         double rightBackPower = (axial + lateral + yaw) * speed; // DO NOT CHANGE
 
         // Normalize the values so no wheel power exceeds 100%
