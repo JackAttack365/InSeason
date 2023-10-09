@@ -19,7 +19,8 @@ public class Config {
     public static final String LEFT_FRONT_DRIVE = "leftFrontDrive";
     public static final String LEFT_BACK_DRIVE = "leftBackDrive";
     public static final String INTAKE_MOTOR = "intakeMotor";
-    public static final String LIFT = "cascadeLift";
+   public static final  String LOW_ARM_MOTOR = "lowerArmMotor";
+    public static final String UP_ARM_MOTOR = "upperArmMotor";
     private ElapsedTime runtime = new ElapsedTime();
 
     // Constructor
