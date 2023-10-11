@@ -24,17 +24,17 @@ public class Arm extends SubSystem {
     public void update() {
 
 
-        upperArmMotor.setPower(config.gamePad2.left_stick_y);
+        lowerArmMotor.setPower(config.gamePad2.left_stick_y);
 
         if(config.gamePad2.x){
-            lowerArmMotor.setPower(1);
+           upperArmMotor.setPower(0.339);
         }
         else if (config.gamePad2.y)
         {
-            lowerArmMotor.setPower(-1);
+            upperArmMotor.setPower(-0.339);
         }
         else{
-            lowerArmMotor.setPower(0);
+            upperArmMotor.setPower(0);
         }
 
     }
