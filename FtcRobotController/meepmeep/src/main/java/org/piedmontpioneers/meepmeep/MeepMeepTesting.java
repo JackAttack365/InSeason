@@ -1,6 +1,5 @@
 package org.piedmontpioneers.meepmeep;
 
-
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.noahbres.meepmeep.MeepMeep;
 import com.noahbres.meepmeep.core.colorscheme.scheme.ColorSchemeBlueDark;
