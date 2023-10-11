@@ -1,9 +1,9 @@
 package org.firstinspires.ftc.teamcode.autos;
 
 public class BackSpikeParkRed extends Auto{
-    public int firstStrafeLeft = 750;
+    public int firstStrafeLeft = 500;
     public int firstMoveBackward = 750;
-    public int firstCounterClockwise = 1000;
+    public int firstCounterClockwise = 750;
     public int secondMoveBackward = 750;
 
     @Override
