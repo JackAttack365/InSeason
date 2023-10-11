@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 
+import org.firstinspires.ftc.teamcode.subsystem.Arm;
 import org.firstinspires.ftc.teamcode.subsystem.Drive;
 import org.firstinspires.ftc.teamcode.subsystem.Intake;
 import org.firstinspires.ftc.teamcode.subsystem.SubSystem;
@@ -17,6 +18,8 @@ public class ManualRobot {
         config = cfg;
         // Register the subsystem. System will not work if it's not registered
         subSystems.add(new Drive(config));
+        subSystems.add(new Arm(config));
+
         //subSystems.add(new Intake(config));
     }
 
@@ -33,4 +36,6 @@ public class ManualRobot {
             sub.update();
         }
     }
+
+
 }

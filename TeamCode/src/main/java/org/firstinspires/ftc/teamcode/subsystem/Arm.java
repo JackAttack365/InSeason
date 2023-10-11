@@ -23,8 +23,19 @@ public class Arm extends SubSystem {
     @Override
     public void update() {
 
-        lowerArmMotor.setPower(config.gamePad1.left_stick_y);
-        upperArmMotor.setPower(config.gamePad1.left_stick_y);
+
+        upperArmMotor.setPower(config.gamePad2.left_stick_y);
+
+        if(config.gamePad2.x){
+            lowerArmMotor.setPower(1);
+        }
+        else if (config.gamePad2.y)
+        {
+            lowerArmMotor.setPower(-1);
+        }
+        else{
+            lowerArmMotor.setPower(0);
+        }
 
     }
 }
