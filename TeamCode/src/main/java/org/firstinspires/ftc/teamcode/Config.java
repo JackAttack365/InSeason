@@ -21,6 +21,7 @@ public class Config {
     public static final String INTAKE_MOTOR = "intakeMotor";
    public static final  String LOW_ARM_MOTOR = "lowerArmMotor";
     public static final String UP_ARM_MOTOR = "upperArmMotor";
+    public static final String ARM_CLAW = "clawServo";
     private ElapsedTime runtime = new ElapsedTime();
 
     // Constructor
