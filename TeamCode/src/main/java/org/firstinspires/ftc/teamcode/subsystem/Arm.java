@@ -26,13 +26,13 @@ public class Arm extends SubSystem {
 
         // TODO: TUNE SPEED
         double maxSpeed = 0.5;
-        double speed = config.gamePad2.left_stick_y / 5;
+        double speed = config.gamePad2.left_stick_y / 2;
 
         if (speed > maxSpeed) {
             speed = maxSpeed;
         }
 
-        lowerArmMotor.setPower(speed);
+        lowerArmMotor.setPower(-speed);
 
         if(config.gamePad2.x){
            upperArmMotor.setPower(0.339);

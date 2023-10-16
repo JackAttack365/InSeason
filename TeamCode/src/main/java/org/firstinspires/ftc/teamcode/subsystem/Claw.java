@@ -9,6 +9,9 @@ public class Claw extends SubSystem {
     private Servo clawServo;
     double currPosition = 1;
 
+    public static final double OPEN = 1;
+    public static final double CLOSED = 0.63;
+
     public Claw(Config config) {
         super(config);
     }
@@ -22,12 +25,12 @@ public class Claw extends SubSystem {
     public void update() {
         // todo: tune position values
         if (config.gamePad2.a) {
-            clawServo.setPosition(1);
-            currPosition = 1;
+            clawServo.setPosition(Claw.OPEN);
+            currPosition = Claw.OPEN;
         }
         if (config.gamePad2.b) {
-            clawServo.setPosition(0.5);
-            currPosition = 0.5;
+            clawServo.setPosition(Claw.CLOSED);
+            currPosition = Claw.CLOSED;
         }
         clawServo.setPosition(currPosition);
     }
