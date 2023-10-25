@@ -11,7 +11,7 @@ public abstract class Auto extends LinearOpMode {
     protected DcMotor rightFrontDrive;
     protected DcMotor rightBackDrive;
 
-    public double power = 0.5;
+    public double power = 0.75;
 
     // Initialize. Similar to SubSystem.init();
     protected void initMotors() {

@@ -1,5 +1,8 @@
 package org.firstinspires.ftc.teamcode.autos;
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+
+@Autonomous(name = "BackParkBlue")
 public class BackParkBlueSide extends Auto{
 
     public int firstDriveForward = 1000;
