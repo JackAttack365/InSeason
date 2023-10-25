@@ -6,7 +6,8 @@ import org.firstinspires.ftc.teamcode.Config;
 
 public class Arm extends SubSystem {
 
-    private DcMotor lowerArmMotor;
+    private DcMotor lowerArmMotorRight;
+    //private DcMotor lowerArmMotorLeft;
     private DcMotor upperArmMotor;
     public Arm (Config config) {
         super(config);
@@ -14,7 +15,8 @@ public class Arm extends SubSystem {
 
     @Override
     public void init() {
-        lowerArmMotor = config.hardwareMap.get(DcMotor.class, Config.LOW_ARM_MOTOR);
+        lowerArmMotorRight = config.hardwareMap.get(DcMotor.class, Config.RIGHT_LOW_ARM_MOTOR);
+        //lowerArmMotorLeft = config.hardwareMap.get(DcMotor.class, Config.LEFT_LOW_ARM_MOTOR);
         upperArmMotor = config.hardwareMap.get(DcMotor.class, Config.UP_ARM_MOTOR);
 
 
@@ -25,14 +27,15 @@ public class Arm extends SubSystem {
 
 
         // TODO: TUNE SPEED
-        double maxSpeed = 0.70;
-        double speed = config.gamePad2.left_stick_y / 2;
+        double maxSpeed = 1;
+        double speed = config.gamePad2.left_stick_y / 1.75;
 
         if (speed > maxSpeed) {
             speed = maxSpeed;
         }
 
-        lowerArmMotor.setPower(speed);
+        lowerArmMotorRight.setPower(speed);
+        //lowerArmMotorLeft.setPower(speed);
 
         if(config.gamePad2.x){
            upperArmMotor.setPower(0.339);
