@@ -24,14 +24,26 @@ public class Claw extends SubSystem {
     @Override
     public void update() {
         // todo: tune position values
-        if (config.gamePad2.a) {
-            clawServo.setPosition(Claw.OPEN);
-            currPosition = Claw.OPEN;
+        if (isOneController) {
+            if (config.gamePad1.a) {
+                clawServo.setPosition(Claw.OPEN);
+                currPosition = Claw.OPEN;
+            }
+            if (config.gamePad1.b) {
+                clawServo.setPosition(Claw.CLOSED);
+                currPosition = Claw.CLOSED;
+            }
+        } else {
+            if (config.gamePad2.a) {
+                clawServo.setPosition(Claw.OPEN);
+                currPosition = Claw.OPEN;
+            }
+            if (config.gamePad2.b) {
+                clawServo.setPosition(Claw.CLOSED);
+                currPosition = Claw.CLOSED;
+            }
         }
-        if (config.gamePad2.b) {
-            clawServo.setPosition(Claw.CLOSED);
-            currPosition = Claw.CLOSED;
-        }
+
         clawServo.setPosition(currPosition);
     }
 }
