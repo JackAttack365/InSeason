@@ -28,7 +28,7 @@ public class Arm extends SubSystem {
 
         // TODO: TUNE SPEED
         double maxSpeed = 1;
-        double speed = config.gamePad2.left_stick_y / 1.75;
+        double speed = config.gamePad2.left_stick_y / 1.5;
 
         if (speed > maxSpeed) {
             speed = maxSpeed;
