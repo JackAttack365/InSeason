@@ -16,6 +16,10 @@ public class Claw extends SubSystem {
         super(config);
     }
 
+    public Claw(Config config, boolean isOneController) {
+        super(config, isOneController);
+    }
+
     @Override
     public void init() {
         clawServo = config.hardwareMap.get(Servo.class, Config.ARM_CLAW);

@@ -14,6 +14,10 @@ public class Drive extends SubSystem {
         super(cfg);
     }
 
+    public Drive(Config cfg, boolean isOneController) {
+        super(cfg, isOneController);
+    }
+
     public void init() {
 
         // Initialize the hardware variables. Note that the strings used here must correspond

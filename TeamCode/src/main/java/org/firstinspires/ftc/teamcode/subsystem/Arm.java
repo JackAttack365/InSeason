@@ -13,6 +13,10 @@ public class Arm extends SubSystem {
         super(config);
     }
 
+    public Arm(Config config, boolean isOneController) {
+        super(config, isOneController);
+    }
+
     @Override
     public void init() {
         lowerArmMotorRight = config.hardwareMap.get(DcMotor.class, Config.RIGHT_LOW_ARM_MOTOR);
