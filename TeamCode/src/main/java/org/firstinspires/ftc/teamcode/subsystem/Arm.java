@@ -22,8 +22,12 @@ public class Arm extends SubSystem {
         lowerArmMotorRight = config.hardwareMap.get(DcMotor.class, Config.RIGHT_LOW_ARM_MOTOR);
         //lowerArmMotorLeft = config.hardwareMap.get(DcMotor.class, Config.LEFT_LOW_ARM_MOTOR);
         upperArmMotor = config.hardwareMap.get(DcMotor.class, Config.UP_ARM_MOTOR);
-
-
+        lowerArmMotorRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        lowerArmMotorRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        //lowerArmMotorLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        //lowerArmMotorLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        upperArmMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        upperArmMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
     }
 
     @Override
@@ -68,8 +72,11 @@ public class Arm extends SubSystem {
                 upperArmMotor.setPower(0);
             }
         }
-
-
-
+        int lowerArmPositionRight = lowerArmMotorRight.getCurrentPosition();
+        //int lowerArmPositionLeft = lowerArmMotorLeft.getCurrentPosition();
+        int upperArmPosition = upperArmMotor.getCurrentPosition();
+        config.telemetry.addData("Lower Arm Position Right", lowerArmPositionRight);
+        //config.telemetry.addData("Lower Arm Position Left", lowerArmPositionLeft);
+        config.telemetry.addData("Upper Arm Position", upperArmPosition);
     }
 }
