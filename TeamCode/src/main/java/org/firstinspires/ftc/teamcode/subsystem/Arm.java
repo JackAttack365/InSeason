@@ -31,26 +31,45 @@ public class Arm extends SubSystem {
 
 
         // TODO: TUNE SPEED
-        double maxSpeed = 1;
-        double speed = config.gamePad2.left_stick_y / 1.5;
+        if(isOneController) {
+            if (config.gamePad2.dpad_down){
+                lowerArmMotorRight.setPower(-1);
 
-        if (speed > maxSpeed) {
-            speed = maxSpeed;
+            }
+            if (config.gamePad2.dpad_up){
+                lowerArmMotorRight.setPower(1);
+            }
+
+
+            if (config.gamePad2.x) {
+                upperArmMotor.setPower(0.339);
+            } else if (config.gamePad2.y) {
+                upperArmMotor.setPower(-0.339);
+            } else {
+                upperArmMotor.setPower(0);
+            }
+        }
+        else {
+            double maxSpeed = 1;
+            double speed = config.gamePad2.left_stick_y / 1.5;
+
+            if (speed > maxSpeed) {
+                speed = maxSpeed;
+            }
+
+            lowerArmMotorRight.setPower(speed);
+            //lowerArmMotorLeft.setPower(speed);
+
+            if (config.gamePad2.x) {
+                upperArmMotor.setPower(0.339);
+            } else if (config.gamePad2.y) {
+                upperArmMotor.setPower(-0.339);
+            } else {
+                upperArmMotor.setPower(0);
+            }
         }
 
-        lowerArmMotorRight.setPower(speed);
-        //lowerArmMotorLeft.setPower(speed);
 
-        if(config.gamePad2.x){
-           upperArmMotor.setPower(0.339);
-        }
-        else if (config.gamePad2.y)
-        {
-            upperArmMotor.setPower(-0.339);
-        }
-        else{
-            upperArmMotor.setPower(0);
-        }
 
     }
 }
