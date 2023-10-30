@@ -22,6 +22,8 @@ public class BackParkBlueSide extends Auto{
         spinCounterClockwise(firstTurnLeft);
         moveForward(secondDriveForward);
         //place pixel already stored on robot onto backdrop
+        //add turning around so the robot is in the right position to place the pixel
+        //add a pause so the robot has time to place the pixel before parking
         strafeLeft(secondStrafeLeft);
         moveForward(thirdDriveForward);
         //this leaves you in the parking area backstage
