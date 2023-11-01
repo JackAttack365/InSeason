@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.autos;
 
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.hardware.DcMotor;
 
 @Autonomous(name="SpikeParkRed")
 public class SpikeparkRedside extends Auto{
@@ -22,7 +23,8 @@ public class SpikeparkRedside extends Auto{
         score();
         strafeRight(sLeftright2);
         spinClockwise(side);
-        //place on board
+        score();
+
         //park
 
 
