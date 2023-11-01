@@ -2,7 +2,7 @@ package org.firstinspires.ftc.teamcode.autos;
 
 public class SpikeparkBlueside extends Auto{
     public int forward = 2000;
-    public int sRightLeft = 800;
+    public int sRightLeft = 900;
     public int sLeftright2 = 4000;
     public int side = 1000;
     @Override
