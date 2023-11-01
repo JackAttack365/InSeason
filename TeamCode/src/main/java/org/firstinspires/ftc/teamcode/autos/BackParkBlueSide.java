@@ -5,18 +5,23 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 @Autonomous(name = "BackParkBlue")
 public class BackParkBlueSide extends Auto{
 
-    public int firstDriveForward = 935;
-    public int firstStrafeLeft = 2000;
-    public int firstTurnLeft = 750;
-    public int secondDriveForward = 1000;
-    public int secondStrafeLeft = 1000;
-    public int thirdDriveForward = 550;
+    private int firstDriveForward = 935;
+    private int firstStrafeLeft = 2000;
+    private int firstTurnLeft = 750;
+    private int secondDriveForward = 1000;
+    private int secondStrafeLeft = 1000;
+    private int thirdDriveForward = 550;
+    private int parkStrafe = 500;
+
 
     @Override
     public void runOpMode() throws InterruptedException {
+        // INIT CODE
         initMotors();
+
         waitForStart();
 
+        // Path
         moveForward(firstDriveForward);
         strafeLeft(firstStrafeLeft);
         spinCounterClockwise(firstTurnLeft);
@@ -27,7 +32,7 @@ public class BackParkBlueSide extends Auto{
         strafeLeft(secondStrafeLeft);
         moveForward(thirdDriveForward);
         //this leaves you in the parking area backstage
-
+        strafeRight(parkStrafe);
     }
 
 }

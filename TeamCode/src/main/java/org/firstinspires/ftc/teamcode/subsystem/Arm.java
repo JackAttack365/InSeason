@@ -9,6 +9,9 @@ public class Arm extends SubSystem {
     private DcMotor lowerArmMotorRight;
     //private DcMotor lowerArmMotorLeft;
     private DcMotor upperArmMotor;
+    // TODO: Tune Values
+    private long encoderPositionScore = 0;
+    private long encoderPositionGrab = 0;
     public Arm (Config config) {
         super(config);
     }
@@ -23,11 +26,11 @@ public class Arm extends SubSystem {
         //lowerArmMotorLeft = config.hardwareMap.get(DcMotor.class, Config.LEFT_LOW_ARM_MOTOR);
         upperArmMotor = config.hardwareMap.get(DcMotor.class, Config.UP_ARM_MOTOR);
         lowerArmMotorRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        lowerArmMotorRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        //lowerArmMotorRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         //lowerArmMotorLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         //lowerArmMotorLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         upperArmMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        upperArmMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        //upperArmMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
     }
 
     @Override
@@ -36,20 +39,25 @@ public class Arm extends SubSystem {
 
         // TODO: TUNE SPEED
         if(isOneController) {
-            if (config.gamePad2.dpad_down){
+            if (config.gamePad1.dpad_down){
+                lowerArmMotorRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
                 lowerArmMotorRight.setPower(-1);
 
             }
-            if (config.gamePad2.dpad_up){
+            if (config.gamePad1.dpad_up){
+                lowerArmMotorRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
                 lowerArmMotorRight.setPower(1);
             }
 
 
-            if (config.gamePad2.x) {
+            if (config.gamePad1.x) {
+                upperArmMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
                 upperArmMotor.setPower(0.339);
-            } else if (config.gamePad2.y) {
+            } else if (config.gamePad1.y) {
+                upperArmMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
                 upperArmMotor.setPower(-0.339);
             } else {
+                upperArmMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
                 upperArmMotor.setPower(0);
             }
         }
@@ -60,18 +68,23 @@ public class Arm extends SubSystem {
             if (speed > maxSpeed) {
                 speed = maxSpeed;
             }
-
+            lowerArmMotorRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
             lowerArmMotorRight.setPower(speed);
             //lowerArmMotorLeft.setPower(speed);
 
             if (config.gamePad2.x) {
+                upperArmMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
                 upperArmMotor.setPower(0.339);
             } else if (config.gamePad2.y) {
+                upperArmMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
                 upperArmMotor.setPower(-0.339);
             } else {
+                upperArmMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
                 upperArmMotor.setPower(0);
             }
         }
+
+        // Telemetry to help tune encoder values
         int lowerArmPositionRight = lowerArmMotorRight.getCurrentPosition();
         //int lowerArmPositionLeft = lowerArmMotorLeft.getCurrentPosition();
         int upperArmPosition = upperArmMotor.getCurrentPosition();
