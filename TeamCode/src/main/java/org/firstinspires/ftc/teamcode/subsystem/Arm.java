@@ -85,11 +85,8 @@ public class Arm extends SubSystem {
         }
 
         // Telemetry to help tune encoder values
-        int lowerArmPositionRight = lowerArmMotorRight.getCurrentPosition();
-        //int lowerArmPositionLeft = lowerArmMotorLeft.getCurrentPosition();
-        int upperArmPosition = upperArmMotor.getCurrentPosition();
-        config.telemetry.addData("Lower Arm Position Right", lowerArmPositionRight);
-        //config.telemetry.addData("Lower Arm Position Left", lowerArmPositionLeft);
-        config.telemetry.addData("Upper Arm Position", upperArmPosition);
+
+
+
     }
 }

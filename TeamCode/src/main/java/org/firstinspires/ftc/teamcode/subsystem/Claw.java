@@ -8,6 +8,7 @@ public class Claw extends SubSystem {
 
     private Servo clawServo;
     double currPosition = 1;
+    
 
     public static final double OPEN = 1;
     public static final double CLOSED = 0.63;

@@ -26,7 +26,7 @@ public class BackParkBlueSide extends Auto{
         strafeLeft(firstStrafeLeft);
         spinCounterClockwise(firstTurnLeft);
         moveForward(secondDriveForward);
-        //place pixel already stored on robot onto backdrop
+       score();
         //add turning around so the robot is in the right position to place the pixel
         //add a pause so the robot has time to place the pixel before parking
         strafeLeft(secondStrafeLeft);
