@@ -19,7 +19,7 @@ public class SpikeparkRedside extends Auto{
 //        moveForward();
         moveForward(forward);
         strafeLeft(sRightLeft);
-        // Place spike
+        score();
         strafeRight(sLeftright2);
         spinClockwise(side);
         //place on board
