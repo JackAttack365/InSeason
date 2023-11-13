@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 @Autonomous(name = "BackParkBlue")
 public class BackParkBlueSide extends Auto{
 
-    private int firstDriveForward = 935;
+    private int firstDriveForward = 915;
     private int firstStrafeLeft = 2000;
     private int firstTurnLeft = 750;
     private int secondDriveForward = 1000;
@@ -26,7 +26,7 @@ public class BackParkBlueSide extends Auto{
         strafeLeft(firstStrafeLeft);
         spinCounterClockwise(firstTurnLeft);
         moveForward(secondDriveForward);
-       score();
+        score();
         //add turning around so the robot is in the right position to place the pixel
         //add a pause so the robot has time to place the pixel before parking
         strafeLeft(secondStrafeLeft);

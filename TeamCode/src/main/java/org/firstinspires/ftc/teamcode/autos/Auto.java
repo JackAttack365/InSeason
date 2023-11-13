@@ -36,7 +36,6 @@ public abstract class Auto extends LinearOpMode {
         rightFrontDrive.setDirection(DcMotor.Direction.FORWARD); // DO NOT CHANGE
         rightBackDrive.setDirection(DcMotor.Direction.FORWARD); // DO NOT CHANGE
 
-        lowerArmMotorRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
 
 
@@ -111,8 +110,9 @@ public abstract class Auto extends LinearOpMode {
     public void score()
     {
         lowerArmMotorRight.setTargetPosition(encoder);
+        //lowerArmMotorRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         lowerArmMotorRight.setPower(somepower);
-      //Adjust upper arm to the board
+        //Adjust upper arm to the board
       //Drop the pixel
     }
 

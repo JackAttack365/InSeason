@@ -10,8 +10,8 @@ public class Arm extends SubSystem {
     //private DcMotor lowerArmMotorLeft;
     private DcMotor upperArmMotor;
     // TODO: Tune Values
-    private long encoderPositionScore = 0;
-    private long encoderPositionGrab = 0;
+    private int lowerArmEncoderPositionScore = -1950;
+    private long lowerArmEncoderPositionGrab = 0;
     public Arm (Config config) {
         super(config);
     }
@@ -26,11 +26,8 @@ public class Arm extends SubSystem {
         //lowerArmMotorLeft = config.hardwareMap.get(DcMotor.class, Config.LEFT_LOW_ARM_MOTOR);
         upperArmMotor = config.hardwareMap.get(DcMotor.class, Config.UP_ARM_MOTOR);
         lowerArmMotorRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        //lowerArmMotorRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         //lowerArmMotorLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        //lowerArmMotorLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         upperArmMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        //upperArmMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
     }
 
     @Override
@@ -43,10 +40,12 @@ public class Arm extends SubSystem {
                 lowerArmMotorRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
                 lowerArmMotorRight.setPower(-1);
 
-            }
-            if (config.gamePad1.dpad_up){
+            } else if (config.gamePad1.dpad_up){
                 lowerArmMotorRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
                 lowerArmMotorRight.setPower(1);
+            } else {
+                lowerArmMotorRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+                lowerArmMotorRight.setPower(0);
             }
 
 
@@ -70,7 +69,6 @@ public class Arm extends SubSystem {
             }
             lowerArmMotorRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
             lowerArmMotorRight.setPower(speed);
-            //lowerArmMotorLeft.setPower(speed);
 
             if (config.gamePad2.x) {
                 upperArmMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
@@ -84,9 +82,12 @@ public class Arm extends SubSystem {
             }
         }
 
+        // Syncs both lower arm motors
+        //lowerArmMotorLeft.setPower(lowerArmMotorRight.getPower());
+
         // Telemetry to help tune encoder values
-
-
+        config.telemetry.addData("Lower Arm Motor Encoder Position", lowerArmMotorRight.getCurrentPosition());
+        config.telemetry.addData("Upper Arm Motor Encoder Position", upperArmMotor.getCurrentPosition());
 
     }
 }
