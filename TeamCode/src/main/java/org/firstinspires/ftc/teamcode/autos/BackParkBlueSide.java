@@ -5,10 +5,9 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 @Autonomous(name = "BackParkBlue")
 public class BackParkBlueSide extends Auto{
 
-    private int firstDriveForward = 935;
-    private int firstStrafeLeft = 2000;
-    private int firstTurnLeft = 750;
-    private int secondDriveForward = 1000;
+    private int firstDriveForward = 915;
+    private int firstTurnLeft = 725;
+    private int secondDriveForward = 2000;
     private int secondStrafeLeft = 1000;
     private int thirdDriveForward = 550;
     private int parkStrafe = 500;
@@ -23,12 +22,10 @@ public class BackParkBlueSide extends Auto{
 
         // Path
         moveForward(firstDriveForward);
-        strafeLeft(firstStrafeLeft);
         spinCounterClockwise(firstTurnLeft);
         moveForward(secondDriveForward);
-       score();
-        //add turning around so the robot is in the right position to place the pixel
-        //add a pause so the robot has time to place the pixel before parking
+        //add turning around so the robot is in the right position to place the pixel (if needed)
+        //score();
         strafeLeft(secondStrafeLeft);
         moveForward(thirdDriveForward);
         //this leaves you in the parking area backstage

@@ -8,7 +8,7 @@ import org.firstinspires.ftc.teamcode.Config;
 public class Intake extends SubSystem {
 
     private DcMotor intake;
-
+    private boolean isMotorRunning = false;
     public Intake(Config config) {
         super(config);
     }
@@ -20,14 +20,13 @@ public class Intake extends SubSystem {
 
     @Override
     public void update() {
-        if(config.gamePad1.y) {
-            intake.setPower(1);
-        }
-        else if(config.gamePad1.x) {
-            intake.setPower(-0.5);
-        }
-        else if(config.gamePad1.right_bumper) {
-            intake.setPower(0);
+        if (config.gamePad2.a){
+            if (isMotorRunning){
+                intake.setPower(0);
+            }
+            else{
+                intake.setPower(1);
+            }
         }
     }
 
