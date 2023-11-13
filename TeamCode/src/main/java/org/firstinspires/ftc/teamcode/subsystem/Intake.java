@@ -29,8 +29,10 @@ public class Intake extends SubSystem {
             if (config.gamePad1.a) {
                 if (isMotorRunning){
                     intake.setPower(0);
+                    isMotorRunning = false;
                 } else {
                     intake.setPower(1);
+                    isMotorRunning = true;
                 }
             }
         } else {
@@ -38,8 +40,10 @@ public class Intake extends SubSystem {
             if (config.gamePad2.a) {
                 if (isMotorRunning){
                     intake.setPower(0);
+                    isMotorRunning = false;
                 } else {
                     intake.setPower(1);
+                    isMotorRunning = true;
                 }
             }
         }
