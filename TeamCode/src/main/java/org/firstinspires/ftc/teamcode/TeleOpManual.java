@@ -6,8 +6,8 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 @TeleOp(name="TeleOp", group="Linear Opmode")
 public class TeleOpManual extends LinearOpMode {
     // Config
-    Config config = null;
-    ManualRobot manualRobot = null;
+    Config config;
+    ManualRobot manualRobot;
 
     @Override
     public void runOpMode() {

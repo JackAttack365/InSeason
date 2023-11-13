@@ -73,8 +73,6 @@ public class Drive extends SubSystem {
         leftBackDrive.setPower(leftBackPower);
         rightBackDrive.setPower(rightBackPower);
 
-        // leftBackDrive.getCurrentPosition();
-
         // Show the elapsed game time and wheel power.
         config.telemetry.addData("Front left/Right", "%4.2f, %4.2f", leftFrontPower, rightFrontPower);
         config.telemetry.addData("Back  left/Right", "%4.2f, %4.2f", leftBackPower, rightBackPower);

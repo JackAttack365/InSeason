@@ -48,5 +48,9 @@ public class Intake extends SubSystem {
             }
         }
     }
+    // Getter
+    public boolean isIntakeMotorRunning() {
+        return isMotorRunning;
+    }
 
 }

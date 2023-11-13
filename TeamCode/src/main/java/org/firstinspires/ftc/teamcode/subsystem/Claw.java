@@ -49,6 +49,7 @@ public class Claw extends SubSystem {
             }
         }
 
+        // Holds torque on game piece without moving
         clawServo.setPosition(currPosition);
     }
 }

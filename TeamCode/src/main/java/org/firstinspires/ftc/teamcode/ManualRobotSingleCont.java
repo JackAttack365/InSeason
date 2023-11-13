@@ -13,6 +13,7 @@ public class ManualRobotSingleCont {
 
     // Config class to all hardware controls
     Config config;
+    // List of all registered subsystems
     List<SubSystem> subSystems = new LinkedList<>();
 
     // Constructor
@@ -34,7 +35,7 @@ public class ManualRobotSingleCont {
         }
     }
 
-    // Update each subsystem
+    // Update each subsystem. Runs in a loop
     public void update() {
         for (SubSystem sub : subSystems) {
             sub.update();
