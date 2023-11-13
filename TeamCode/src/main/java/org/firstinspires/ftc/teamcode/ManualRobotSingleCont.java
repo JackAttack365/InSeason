@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import org.firstinspires.ftc.teamcode.subsystem.Arm;
 import org.firstinspires.ftc.teamcode.subsystem.Claw;
 import org.firstinspires.ftc.teamcode.subsystem.Drive;
+import org.firstinspires.ftc.teamcode.subsystem.Intake;
 import org.firstinspires.ftc.teamcode.subsystem.SubSystem;
 
 import java.util.LinkedList;
@@ -21,6 +22,7 @@ public class ManualRobotSingleCont {
         subSystems.add(new Drive(config, true));
         subSystems.add(new Arm(config, true));
         subSystems.add(new Claw(config, true));
+        subSystems.add(new Intake(config, true));
 
         //subSystems.add(new Intake(config));
     }
