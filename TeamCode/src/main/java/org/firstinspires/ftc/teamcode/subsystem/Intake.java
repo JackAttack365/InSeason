@@ -20,11 +20,10 @@ public class Intake extends SubSystem {
 
     @Override
     public void update() {
-        if (config.gamePad2.a){
+        if (config.gamePad2.a) {
             if (isMotorRunning){
                 intake.setPower(0);
-            }
-            else{
+            } else {
                 intake.setPower(1);
             }
         }

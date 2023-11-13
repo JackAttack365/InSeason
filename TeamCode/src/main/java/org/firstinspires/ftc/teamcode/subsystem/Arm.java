@@ -10,8 +10,11 @@ public class Arm extends SubSystem {
     //private DcMotor lowerArmMotorLeft;
     private DcMotor upperArmMotor;
     // TODO: Tune Values
-    private int lowerArmEncoderPositionScore = -1950;
-    private long lowerArmEncoderPositionGrab = 0;
+    private int lowerArmEncoderPositionScore = -2064;
+    private int lowerArmEncoderPositionGrab = 0;
+    //TODO: TUNE
+    private int upperArmEncoderPositionScore = -700;
+    private int upperArmEncoderPositionGrab = 0;
     public Arm (Config config) {
         super(config);
     }
@@ -35,6 +38,7 @@ public class Arm extends SubSystem {
 
 
         // TODO: TUNE SPEED
+        // TODO: Add 1 controller mode for run to position
         if(isOneController) {
             if (config.gamePad1.dpad_down){
                 lowerArmMotorRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
@@ -61,25 +65,44 @@ public class Arm extends SubSystem {
             }
         }
         else {
-            double maxSpeed = 1;
-            double speed = config.gamePad2.left_stick_y / 1.5;
 
-            if (speed > maxSpeed) {
-                speed = maxSpeed;
+            double maxSpeed = 1;
+
+            double lowerArmSpeed = config.gamePad2.left_stick_y / 1.5;
+            if (lowerArmSpeed > maxSpeed) {
+                lowerArmSpeed = maxSpeed;
             }
             lowerArmMotorRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-            lowerArmMotorRight.setPower(speed);
+            lowerArmMotorRight.setPower(lowerArmSpeed);
 
-            if (config.gamePad2.x) {
-                upperArmMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-                upperArmMotor.setPower(0.339);
-            } else if (config.gamePad2.y) {
-                upperArmMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-                upperArmMotor.setPower(-0.339);
-            } else {
-                upperArmMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-                upperArmMotor.setPower(0);
+            double upperArmSpeed = config.gamePad2.right_stick_y / 1.5;
+            if (upperArmSpeed > maxSpeed) {
+                upperArmSpeed = maxSpeed;
             }
+            upperArmMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+            upperArmMotor.setPower(upperArmSpeed);
+
+            if (config.gamePad2.y) {
+                // Positions the arm into scoring position
+                lowerArmMotorRight.setTargetPosition(lowerArmEncoderPositionScore);
+                lowerArmMotorRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                lowerArmMotorRight.setPower(1);
+
+                upperArmMotor.setTargetPosition(upperArmEncoderPositionScore);
+                upperArmMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                upperArmMotor.setPower(1);
+            } else if (config.gamePad2.x) {
+                // Positions arm into grabbing position
+                lowerArmMotorRight.setTargetPosition(lowerArmEncoderPositionGrab);
+                lowerArmMotorRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                lowerArmMotorRight.setPower(1);
+
+                upperArmMotor.setTargetPosition(upperArmEncoderPositionGrab);
+                upperArmMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                upperArmMotor.setPower(1);
+            }
+
+
         }
 
         // Syncs both lower arm motors
