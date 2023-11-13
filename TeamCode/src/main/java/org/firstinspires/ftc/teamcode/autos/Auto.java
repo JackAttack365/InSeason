@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 
 import org.firstinspires.ftc.teamcode.Config;
 
+// Auto superclass. Has useful movement methods that can be used in all of our autonomous programs
 public abstract class Auto extends LinearOpMode {
     protected DcMotor leftFrontDrive;
     protected DcMotor leftBackDrive;
