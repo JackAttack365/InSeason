@@ -25,6 +25,7 @@ public class Config {
     public static final  String RIGHT_LOW_ARM_MOTOR = "lowerArmMotorRight";
     public static final  String LEFT_LOW_ARM_MOTOR = "lowerArmMotorLeft";
     public static final String UP_ARM_MOTOR = "upperArmMotor";
+    public static final String ARM_CLAW_2 = "clawServo2";
     public static final String ARM_CLAW = "clawServo";
     // Plane Launcher (Not working)
     public static final String PLANE_LAUNCHER_SERVO = "launcherServo";

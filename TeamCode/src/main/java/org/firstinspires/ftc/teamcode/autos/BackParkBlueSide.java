@@ -32,4 +32,7 @@ public class BackParkBlueSide extends Auto{
         //this leaves you in the parking area backstage
     }
 
+    private void waitForStart() {
+    }
+
 }
