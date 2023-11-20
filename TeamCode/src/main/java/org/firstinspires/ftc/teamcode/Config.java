@@ -28,7 +28,7 @@ public class Config {
     public static final String ARM_CLAW_2 = "clawServo2";
     public static final String ARM_CLAW = "clawServo";
     // Plane Launcher (Not working)
-    public static final String PLANE_LAUNCHER_SERVO = "launcherServo";
+    public static final String PLANE_LAUNCHER = "launcherServo";
 
     // Current game runtime
     private ElapsedTime runtime = new ElapsedTime();
