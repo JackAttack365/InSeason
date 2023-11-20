@@ -90,17 +90,6 @@ public abstract class Auto extends LinearOpMode {
     }
 
     public void spinCounterClockwise(long milliseconds) {
-        leftFrontDrive.setPower(movementSpeed);
-        leftBackDrive.setPower(movementSpeed);
-        rightFrontDrive.setPower(-movementSpeed);
-        rightBackDrive.setPower(-movementSpeed);
-        sleep(milliseconds);
-        leftFrontDrive.setPower(0);
-        leftBackDrive.setPower(0);
-        rightFrontDrive.setPower(0);
-        rightBackDrive.setPower(0);
-    }
-    public void spinClockwise(long milliseconds) {
         leftFrontDrive.setPower(-movementSpeed);
         leftBackDrive.setPower(-movementSpeed);
         rightFrontDrive.setPower(movementSpeed);
@@ -111,15 +100,26 @@ public abstract class Auto extends LinearOpMode {
         rightFrontDrive.setPower(0);
         rightBackDrive.setPower(0);
     }
+    public void spinClockwise(long milliseconds) {
+        leftFrontDrive.setPower(movementSpeed);
+        leftBackDrive.setPower(movementSpeed);
+        rightFrontDrive.setPower(-movementSpeed);
+        rightBackDrive.setPower(-movementSpeed);
+        sleep(milliseconds);
+        leftFrontDrive.setPower(0);
+        leftBackDrive.setPower(0);
+        rightFrontDrive.setPower(0);
+        rightBackDrive.setPower(0);
+    }
     public void score()
     {
-        lowerArmMotorRight.setTargetPosition(lowerArmPositionScore);
-        lowerArmMotorRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        lowerArmMotorRight.setPower(somepower);
-
-        upperArmMotor.setTargetPosition(upperArmPositionScore);
-        upperArmMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        upperArmMotor.setPower(somepower);
+//        lowerArmMotorRight.setTargetPosition(lowerArmPositionScore);
+//        lowerArmMotorRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+//        lowerArmMotorRight.setPower(somepower);
+//
+//        upperArmMotor.setTargetPosition(upperArmPositionScore);
+//        upperArmMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+//        upperArmMotor.setPower(somepower);
     }
 
 

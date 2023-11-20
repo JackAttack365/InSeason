@@ -22,7 +22,7 @@ public class ManualRobot {
         subSystems.add(new Drive(config));
         subSystems.add(new Arm(config));
         subSystems.add(new Claw(config));
-        subSystems.add(new Intake(config));
+        //subSystems.add(new Intake(config));
     }
 
     // Initialize each subsystem
