@@ -7,7 +7,7 @@ import org.firstinspires.ftc.teamcode.Config;
 public class Arm extends SubSystem {
 
     private DcMotor lowerArmMotorRight;
-    //private DcMotor lowerArmMotorLeft;
+    private DcMotor lowerArmMotorLeft;
     private DcMotor upperArmMotor;
     // TODO: Tune Values
     private int lowerArmEncoderPositionScore = -2064;
@@ -27,10 +27,9 @@ public class Arm extends SubSystem {
     @Override
     public void init() {
         lowerArmMotorRight = config.hardwareMap.get(DcMotor.class, Config.RIGHT_LOW_ARM_MOTOR);
-        //lowerArmMotorLeft = config.hardwareMap.get(DcMotor.class, Config.LEFT_LOW_ARM_MOTOR);
+        lowerArmMotorLeft = config.hardwareMap.get(DcMotor.class, Config.LEFT_LOW_ARM_MOTOR);
         upperArmMotor = config.hardwareMap.get(DcMotor.class, Config.UP_ARM_MOTOR);
 
-        upperArmMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
     }
 
     @Override
@@ -107,7 +106,7 @@ public class Arm extends SubSystem {
 
 
         // Syncs both lower arm motors
-        //lowerArmMotorLeft.setPower(lowerArmMotorRight.getPower());
+        lowerArmMotorLeft.setPower(lowerArmMotorRight.getPower());
 
         // Telemetry to help tune encoder values
         //config.telemetry.addData("Lower Arm Motor Encoder Position", lowerArmMotorRight.getCurrentPosition());

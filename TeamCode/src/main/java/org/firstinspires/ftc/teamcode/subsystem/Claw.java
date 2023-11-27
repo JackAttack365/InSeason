@@ -6,9 +6,9 @@ import org.firstinspires.ftc.teamcode.Config;
 
 public class Claw extends SubSystem {
 
-    private Servo clawServo;
-    private Servo servoClaw;
-    double currPosition = 0;
+    private Servo clawServo1;
+    private Servo clawServo2;
+    double currPosition;
 
 
     public static final double OPEN = 0;
@@ -19,14 +19,15 @@ public class Claw extends SubSystem {
     }
 
     public Claw(Config config, boolean isOneController) {
-        super(config);
+        super(config, isOneController);
     }
 
     @Override
     public void init() {
 
-        clawServo = config.hardwareMap.get(Servo.class, Config.ARM_CLAW);
-        servoClaw = config.hardwareMap.get(Servo.class, Config.ARM_CLAW_2);
+        clawServo1 = config.hardwareMap.get(Servo.class, Config.CLAW_SERVO_1);
+        clawServo2 = config.hardwareMap.get(Servo.class, Config.CLAW_SERVO_2);
+
     }
 
     @Override
@@ -34,23 +35,28 @@ public class Claw extends SubSystem {
         // todo: tune position values
         if (isOneController) {
             if (config.gamePad1.left_bumper) {
+                clawServo1.setPosition(Claw.OPEN);
                 currPosition = Claw.OPEN;
             }
             if (config.gamePad1.right_bumper) {
+                clawServo1.setPosition(Claw.CLOSED);
                 currPosition = Claw.CLOSED;
             }
         } else {
             if (config.gamePad2.left_bumper) {
+                clawServo1.setPosition(Claw.OPEN);
                 currPosition = Claw.OPEN;
             }
             if (config.gamePad2.right_bumper) {
+                clawServo1.setPosition(Claw.CLOSED);
                 currPosition = Claw.CLOSED;
             }
         }
 
         // Holds torque on game piece without moving
-        clawServo.setPosition(currPosition);
-        servoClaw.setPosition(currPosition);
+        clawServo1.setPosition(currPosition);
+        clawServo2.setPosition(currPosition);
+
     }
 
 

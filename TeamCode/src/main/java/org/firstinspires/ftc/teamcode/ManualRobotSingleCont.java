@@ -23,7 +23,7 @@ public class ManualRobotSingleCont {
         subSystems.add(new Drive(config, true));
         subSystems.add(new Arm(config, true));
         subSystems.add(new Claw(config, true));
-        //subSystems.add(new Intake(config, true));
+        subSystems.add(new Intake(config, true));
 
         //subSystems.add(new Intake(config));
     }
