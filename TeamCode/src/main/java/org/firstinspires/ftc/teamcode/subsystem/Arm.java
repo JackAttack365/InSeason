@@ -83,20 +83,7 @@ public class Arm extends SubSystem {
             lowerArmMotorRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
             lowerArmMotorRight.setPower(lowerArmSpeed);
 
-            if (config.gamePad2.y) {
-                // Positions the arm into scoring position
-                lowerArmMotorRight.setTargetPosition(lowerArmEncoderPositionScore);
-                lowerArmMotorRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                lowerArmMotorRight.setPower(1);
-
-            } else if (config.gamePad2.x) {
-                // Positions arm into grabbing position
-                lowerArmMotorRight.setTargetPosition(lowerArmEncoderPositionGrab);
-                lowerArmMotorRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                lowerArmMotorRight.setPower(1);
-
-            }
-        //    upperArmMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+                //upperArmMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
                 upperArmMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
             if (config.gamePad2.dpad_up) {
