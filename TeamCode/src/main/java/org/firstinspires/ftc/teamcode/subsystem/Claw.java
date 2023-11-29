@@ -11,8 +11,8 @@ public class Claw extends SubSystem {
     double currPosition;
 
 
-    public static final double OPEN = 0;
-    public static final double CLOSED = -0.63;
+    public static final double CLOSED = 0;
+    public static final double OPEN = 0.1;
 
     public Claw(Config config) {
         super(config);
@@ -28,6 +28,14 @@ public class Claw extends SubSystem {
         clawServo1 = config.hardwareMap.get(Servo.class, Config.CLAW_SERVO_1);
         clawServo2 = config.hardwareMap.get(Servo.class, Config.CLAW_SERVO_2);
 
+        clawServo1.resetDeviceConfigurationForOpMode();
+        clawServo2.resetDeviceConfigurationForOpMode();
+
+        clawServo2.setDirection(Servo.Direction.FORWARD);
+        clawServo1.setDirection(Servo.Direction.REVERSE);
+
+        currPosition = Claw.CLOSED;
+
     }
 
     @Override
@@ -35,27 +43,29 @@ public class Claw extends SubSystem {
         // todo: tune position values
         if (isOneController) {
             if (config.gamePad1.left_bumper) {
-                clawServo1.setPosition(Claw.OPEN);
                 currPosition = Claw.OPEN;
             }
             if (config.gamePad1.right_bumper) {
-                clawServo1.setPosition(Claw.CLOSED);
                 currPosition = Claw.CLOSED;
             }
         } else {
             if (config.gamePad2.left_bumper) {
-                clawServo1.setPosition(Claw.OPEN);
+                config.telemetry.addData("left bumper pressed", 0);
+
                 currPosition = Claw.OPEN;
             }
             if (config.gamePad2.right_bumper) {
-                clawServo1.setPosition(Claw.CLOSED);
+                config.telemetry.addData("right bumper pressed", 0);
+
                 currPosition = Claw.CLOSED;
             }
         }
 
         // Holds torque on game piece without moving
-        clawServo1.setPosition(currPosition);
+        clawServo1.setPosition(-currPosition);
         clawServo2.setPosition(currPosition);
+        config.telemetry.addData("currPosition", currPosition);
+
 
     }
 
