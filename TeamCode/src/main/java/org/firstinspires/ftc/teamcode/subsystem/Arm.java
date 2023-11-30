@@ -53,22 +53,13 @@ public class Arm extends SubSystem {
                 lowerArmMotorRight.setPower(0);
 
             }
-                //upperArmMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-                upperArmMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+                upperArmMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
             if (config.gamePad1.x) {
-                //upperArmMotor.setTargetPosition(upperArmMotor.getCurrentPosition()+10);
-                //upperArmMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-
-                  upperArmMotor.setPower(upperArmPower);
+                upperArmMotorTargetPos = upperArmMotor.getCurrentPosition()+10;
 
             } else if (config.gamePad1.y) {
-                //upperArmMotor.setTargetPosition(upperArmMotor.getCurrentPosition()-10);
-                //upperArmMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-
-                upperArmMotor.setPower(-upperArmPower);
-            } else {
-                upperArmMotor.setPower(0);
+                upperArmMotorTargetPos = upperArmMotor.getCurrentPosition()-10;
             }
 
         }
