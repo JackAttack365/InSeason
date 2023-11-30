@@ -9,6 +9,7 @@ public class Arm extends SubSystem {
     private DcMotor lowerArmMotorRight;
     private DcMotor lowerArmMotorLeft;
     private DcMotor upperArmMotor;
+    private int upperArmMotorTargetPos = 0;
     // TODO: Tune Values
     private int lowerArmEncoderPositionScore = -2064;
     private int lowerArmEncoderPositionGrab = 0;
@@ -82,23 +83,12 @@ public class Arm extends SubSystem {
             lowerArmMotorRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
             lowerArmMotorRight.setPower(lowerArmSpeed);
 
-                //upperArmMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-                upperArmMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
             if (config.gamePad2.dpad_up) {
-                //upperArmMotor.setTargetPosition(upperArmMotor.getCurrentPosition()+10);
-                //upperArmMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-
-                upperArmMotor.setPower(upperArmPower);
+                upperArmMotorTargetPos = upperArmMotor.getCurrentPosition()-10;
 
             } else if (config.gamePad2.dpad_down) {
-                //upperArmMotor.setTargetPosition(upperArmMotor.getCurrentPosition()-10);
-                //upperArmMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-
-                upperArmMotor.setPower(-upperArmPower);
-            }
-            else {
-                upperArmMotor.setPower(0);
+                upperArmMotorTargetPos = upperArmMotor.getCurrentPosition()+10;
             }
 
         }
@@ -107,6 +97,10 @@ public class Arm extends SubSystem {
 
         // Syncs both lower arm motors
         lowerArmMotorLeft.setPower(lowerArmMotorRight.getPower());
+
+        upperArmMotor.setTargetPosition(upperArmMotorTargetPos);
+        upperArmMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        upperArmMotor.setPower(upperArmPower);
 
         // Telemetry to help tune encoder values
         //config.telemetry.addData("Lower Arm Motor Encoder Position", lowerArmMotorRight.getCurrentPosition());
