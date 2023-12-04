@@ -15,7 +15,7 @@ public class TeleOpManual extends LinearOpMode {
         // Create the config used in all subsystems
         config = new Config(telemetry, hardwareMap, gamepad1, gamepad2);
         // Create the Manual Robot and register the subsystems
-        manualRobot = new ManualRobot(config);
+        manualRobot = new ManualRobot(config, false);
         // Initialize all subsystems
         manualRobot.init();
         waitForStart();

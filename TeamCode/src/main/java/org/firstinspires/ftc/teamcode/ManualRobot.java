@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 
+import org.firstinspires.ftc.teamcode.subsystem.AirplaneLauncher;
 import org.firstinspires.ftc.teamcode.subsystem.Arm;
 import org.firstinspires.ftc.teamcode.subsystem.Claw;
 import org.firstinspires.ftc.teamcode.subsystem.Drive;
@@ -16,13 +17,14 @@ public class ManualRobot {
     List<SubSystem> subSystems = new LinkedList<>();
 
     // Constructor
-    public ManualRobot(Config cfg) {
+    public ManualRobot(Config cfg, boolean isOneController) {
         config = cfg;
         // Register the subsystem. System will not work if it's not registered
-        subSystems.add(new Drive(config));
-        subSystems.add(new Arm(config));
-        subSystems.add(new Claw(config));
-        subSystems.add(new Intake(config));
+        subSystems.add(new Drive(config, isOneController));
+        subSystems.add(new Arm(config, isOneController));
+        subSystems.add(new Claw(config, isOneController));
+        subSystems.add(new Intake(config, isOneController));
+        subSystems.add(new AirplaneLauncher(config, isOneController));
     }
 
     // Initialize each subsystem

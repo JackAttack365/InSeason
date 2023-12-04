@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 public class TeleOpManualSingleCont extends LinearOpMode {
     // Config
     Config config;
-    ManualRobotSingleCont manualRobot;
+    ManualRobot manualRobot;
 
     @Override
     public void runOpMode() {
@@ -16,7 +16,7 @@ public class TeleOpManualSingleCont extends LinearOpMode {
         // Create the config used in all subsystems
         config = new Config(telemetry, hardwareMap, gamepad1, gamepad2);
         // Create the Manual Robot and register the subsystems
-        manualRobot = new ManualRobotSingleCont(config);
+        manualRobot = new ManualRobot(config, true);
         // Initialize all subsystems
         manualRobot.init();
         waitForStart();
