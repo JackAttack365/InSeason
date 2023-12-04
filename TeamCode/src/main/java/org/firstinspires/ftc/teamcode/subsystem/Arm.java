@@ -53,7 +53,6 @@ public class Arm extends SubSystem {
                 lowerArmMotorRight.setPower(0);
 
             }
-                upperArmMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
             if (config.gamePad1.x) {
                 upperArmMotorTargetPos = upperArmMotor.getCurrentPosition()+10;
