@@ -44,7 +44,7 @@ public abstract class Auto extends LinearOpMode {
 
 
     }
-        public void moveBackward(long milliseconds) {
+    public void moveBackward(long milliseconds) {
         leftFrontDrive.setPower(-movementSpeed);
         leftBackDrive.setPower(-movementSpeed);
         rightFrontDrive.setPower(-movementSpeed);
@@ -55,7 +55,7 @@ public abstract class Auto extends LinearOpMode {
         rightFrontDrive.setPower(0);
         rightBackDrive.setPower(0);
     }
-        public void strafeRight(long milliseconds) {
+    public void strafeRight(long milliseconds) {
         leftFrontDrive.setPower(movementSpeed);
         leftBackDrive.setPower(-movementSpeed);
         rightFrontDrive.setPower(-movementSpeed);
@@ -66,7 +66,7 @@ public abstract class Auto extends LinearOpMode {
         rightFrontDrive.setPower(0);
         rightBackDrive.setPower(0);
     }
-        public void strafeLeft(long milliseconds) {
+    public void strafeLeft(long milliseconds) {
         leftFrontDrive.setPower(-movementSpeed);
         leftBackDrive.setPower(movementSpeed);
         rightFrontDrive.setPower(movementSpeed);
@@ -77,7 +77,7 @@ public abstract class Auto extends LinearOpMode {
         rightFrontDrive.setPower(0);
         rightBackDrive.setPower(0);
     }
-        public void moveForward(long milliseconds) {
+    public void moveForward(long milliseconds) {
         leftFrontDrive.setPower(movementSpeed);
         leftBackDrive.setPower(movementSpeed);
         rightFrontDrive.setPower(movementSpeed);
