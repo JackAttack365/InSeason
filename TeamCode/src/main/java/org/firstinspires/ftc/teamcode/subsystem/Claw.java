@@ -41,6 +41,7 @@ public class Claw extends SubSystem {
 
     @Override
     public void update() {
+        // todo: make servos work (debugging)
         // todo: tune position values
         if (isOneController) {
             if (config.gamePad1.left_bumper) {

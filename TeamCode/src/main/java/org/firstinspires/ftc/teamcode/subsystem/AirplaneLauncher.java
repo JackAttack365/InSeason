@@ -34,6 +34,7 @@ public class AirplaneLauncher extends SubSystem {
         } else {
             if (config.gamePad2.b) {
                 airplaneServo.setPosition(0.13);
+                //uses same button (b) for both controller modes
             }
         }
     }

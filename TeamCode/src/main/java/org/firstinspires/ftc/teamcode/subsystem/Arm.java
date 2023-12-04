@@ -37,9 +37,8 @@ public class Arm extends SubSystem {
     @Override
     public void update() {
 
-
+        // TODO: test arm
         // TODO: TUNE SPEED
-        // TODO: Add 1 controller mode for run to position
         if(isOneController) {
             if (config.gamePad1.dpad_down){
                 lowerArmMotorRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);

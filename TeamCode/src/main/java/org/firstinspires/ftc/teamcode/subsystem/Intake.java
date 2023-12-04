@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 
 import org.firstinspires.ftc.teamcode.Config;
 
-// This subsystem is for the motor that moves balls onto the turntable
+// This subsystem drags pixel from field onto the platform where the claw picks it up
 public class Intake extends SubSystem {
 
     private DcMotor intake;
