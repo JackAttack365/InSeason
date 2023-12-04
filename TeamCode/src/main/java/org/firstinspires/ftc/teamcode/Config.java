@@ -9,6 +9,7 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 // Config stores everything any of our SubSystems need to function, stores GamePads, Telemetry, HardwareMap,
 // and names of each motor
 public class Config {
+
     public Telemetry telemetry;
     public HardwareMap hardwareMap;
     public Gamepad gamePad1;
@@ -45,7 +46,7 @@ public class Config {
     void updateTelemetry() {
         telemetry.addData("Status", "Run Time: " + runtime.toString());
 
-        telemetry.addData("G1: bumper", "%b %b", gamePad1.left_bumper, gamePad1.right_bumper);
-        telemetry.addData("G1: trigger", "%4.2f, %4.2f", gamePad1.left_trigger, gamePad1.right_trigger);
+        telemetry.addData("G1: bumper", "L: %b R: %b", gamePad1.left_bumper, gamePad1.right_bumper);
+        telemetry.addData("G1: trigger", "L: %4.2f, R: %4.2f", gamePad1.left_trigger, gamePad1.right_trigger);
     }
 }
