@@ -27,7 +27,7 @@ public class Config {
     public static final String UP_ARM_MOTOR = "upperArmMotor";
     public static final String CLAW_SERVO_1 = "clawServo1";
     public static final String CLAW_SERVO_2 = "clawServo2";
-    // Plane Launcher (Not working)
+
     public static final String PLANE_LAUNCHER = "launcherServo";
 
     // Current game runtime
