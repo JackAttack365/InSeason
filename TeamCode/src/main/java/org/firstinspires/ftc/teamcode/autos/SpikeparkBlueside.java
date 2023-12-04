@@ -15,8 +15,8 @@ public class SpikeparkBlueside extends Auto{
         waitForStart();
         // TODO: Add movement times. Uncomment
 //        moveForward();
-    moveForward(forward);
-    strafeRight(sRightLeft);
+        moveForward(forward);
+        strafeRight(sRightLeft);
     // Place spike
         strafeLeft(sLeftright2);
         spinCounterClockwise(side);

@@ -25,9 +25,7 @@ public class SpikeparkRedside extends Auto{
         spinClockwise(side);
         score();
 
-        //park
-
-
+        //TODO: park
 
     }
 

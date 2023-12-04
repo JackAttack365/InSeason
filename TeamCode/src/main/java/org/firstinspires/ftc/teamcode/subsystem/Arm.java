@@ -9,6 +9,7 @@ public class Arm extends SubSystem {
     private DcMotor lowerArmMotorRight;
     private DcMotor lowerArmMotorLeft;
     private DcMotor upperArmMotor;
+
     private int upperArmMotorTargetPos = 0;
     // TODO: Tune Values
     private int lowerArmEncoderPositionScore = -2064;
@@ -61,8 +62,7 @@ public class Arm extends SubSystem {
                 upperArmMotorTargetPos = upperArmMotor.getCurrentPosition()-10;
             }
 
-        }
-        else {
+        } else {
 
             double maxSpeed = 1;
 

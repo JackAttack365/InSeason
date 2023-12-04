@@ -25,7 +25,7 @@ public class Intake extends SubSystem {
     @Override
     public void update() {
         if (isOneController) {
-            // Toggles the intake when A is pressed on the Start A controller in One Controller Mode
+            // Toggles the intake when A is pressed on the Start A controller in One Controller Mode (DOES NOT WORK)
 //            if (config.gamePad1.a) {
 //                if (isMotorRunning){
 //                    intake.setPower(0);
@@ -41,7 +41,7 @@ public class Intake extends SubSystem {
                 intake.setPower(0);
             }
         } else {
-            // Toggles the intake when A is pressed on the Start B controller
+            // Toggles the intake when A is pressed on the Start B controller (DOES NOT WORK)
 //            if (config.gamePad2.a) {
 //                if (isMotorRunning){
 //                    intake.setPower(0);

@@ -8,6 +8,7 @@ public class Claw extends SubSystem {
 
     private Servo clawServo1;
     private Servo clawServo2;
+
     double currPosition;
 
 
@@ -17,7 +18,6 @@ public class Claw extends SubSystem {
     public Claw(Config config) {
         super(config);
     }
-
     public Claw(Config config, boolean isOneController) {
         super(config, isOneController);
     }
@@ -28,6 +28,7 @@ public class Claw extends SubSystem {
         clawServo1 = config.hardwareMap.get(Servo.class, Config.CLAW_SERVO_1);
         clawServo2 = config.hardwareMap.get(Servo.class, Config.CLAW_SERVO_2);
 
+        // DEBUGGING
         clawServo1.resetDeviceConfigurationForOpMode();
         clawServo2.resetDeviceConfigurationForOpMode();
 
