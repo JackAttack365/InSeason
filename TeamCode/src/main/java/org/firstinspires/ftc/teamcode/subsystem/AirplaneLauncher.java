@@ -9,6 +9,7 @@ public class AirplaneLauncher extends SubSystem {
     public AirplaneLauncher(Config config) {
         super(config);
     }
+
     public AirplaneLauncher(Config config, boolean isOneController) {
         super(config, isOneController);
     }
@@ -45,8 +46,9 @@ public class AirplaneLauncher extends SubSystem {
                 int i = 0;
                 while (i < 100000) {
                     i++;
-                airplaneServo.setPosition(0.13);
-                //uses same button (b) for both controller modes
+                    airplaneServo.setPosition(0.13);
+                    //uses same button (b) for both controller modes
+                }
             }
         }
     }
