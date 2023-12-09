@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 @Autonomous(name = "BackParkBlue")
 public class ParkBlueSide extends Auto{
     // TODO: tune values
-    private int firstDriveForward = 905;
+    private int firstDriveForward = 1810;
     private int firstTurnLeft = 750;
     private int secondTurnLeft = 1000;
     private int secondDriveForward = 2050;
