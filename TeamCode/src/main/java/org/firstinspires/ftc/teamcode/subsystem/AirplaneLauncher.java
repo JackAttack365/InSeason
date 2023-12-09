@@ -22,6 +22,8 @@ public class AirplaneLauncher extends SubSystem {
 
         airplaneServo = config.hardwareMap.get(Servo.class, Config.PLANE_LAUNCHER);
         planeClamp = config.hardwareMap.get(Servo.class, Config.PLANE_CLAMP);
+
+        airplaneServo.setDirection(Servo.Direction.REVERSE);
     }
 
     @Override
@@ -31,24 +33,23 @@ public class AirplaneLauncher extends SubSystem {
         if (isOneController) {
 
             if (config.gamePad1.b) {
-                planeClamp.setPosition(0.1);
-                int i = 0;
-                while (i < 100000) {
-                    i++;
-                }
-                airplaneServo.setPosition(0.13);
+//                planeClamp.setPosition(0.1);
+//                int i = 0;
+//                while (i < 100000) {
+//                    i++;
+//                }
+                airplaneServo.setPosition(2);
 
             }
 
         } else {
             if (config.gamePad2.b) {
-                planeClamp.setPosition(0.1);
-                int i = 0;
-                while (i < 100000) {
-                    i++;
-                    airplaneServo.setPosition(0.13);
-                    //uses same button (b) for both controller modes
-                }
+                //planeClamp.setPosition(0.1);
+//                int i = 0;
+//                while (i < 10000000) {
+//                    i++;
+//                }
+                airplaneServo.setPosition(2);
             }
         }
     }
