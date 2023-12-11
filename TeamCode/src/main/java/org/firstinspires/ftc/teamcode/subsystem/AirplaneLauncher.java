@@ -17,6 +17,8 @@ public class AirplaneLauncher extends SubSystem {
     private Servo airplaneServo;
     private Servo planeClamp;
 
+    private double currPosition = 0.6;
+
     @Override
     public void init() {
 
@@ -38,7 +40,7 @@ public class AirplaneLauncher extends SubSystem {
 //                while (i < 100000) {
 //                    i++;
 //                }
-                airplaneServo.setPosition(2);
+                currPosition = 2;
 
             }
 
@@ -49,9 +51,11 @@ public class AirplaneLauncher extends SubSystem {
 //                while (i < 10000000) {
 //                    i++;
 //                }
-                airplaneServo.setPosition(2);
+                currPosition = 2;
             }
         }
+
+        airplaneServo.setPosition(currPosition);
     }
 }
 
