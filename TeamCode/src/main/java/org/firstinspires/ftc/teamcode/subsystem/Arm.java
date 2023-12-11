@@ -11,6 +11,7 @@ public class Arm extends SubSystem {
     private DcMotor upperArmMotor;
 
     private int upperArmMotorTargetPos = 0;
+    private int upperArmMotorPosIncrements = 50;
     // TODO: Tune Values
     private int lowerArmEncoderPositionScore = -2064;
     private int lowerArmEncoderPositionGrab = 0;
@@ -32,6 +33,7 @@ public class Arm extends SubSystem {
         lowerArmMotorLeft = config.hardwareMap.get(DcMotor.class, Config.LEFT_LOW_ARM_MOTOR);
         upperArmMotor = config.hardwareMap.get(DcMotor.class, Config.UP_ARM_MOTOR);
 
+        upperArmMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
     }
 
     @Override
@@ -74,10 +76,10 @@ public class Arm extends SubSystem {
 
 
             if (config.gamePad2.dpad_up) {
-                upperArmMotorTargetPos = upperArmMotor.getCurrentPosition()-10;
+                upperArmMotorTargetPos = upperArmMotor.getCurrentPosition()-upperArmMotorPosIncrements;
 
             } else if (config.gamePad2.dpad_down) {
-                upperArmMotorTargetPos = upperArmMotor.getCurrentPosition()+10;
+                upperArmMotorTargetPos = upperArmMotor.getCurrentPosition()+upperArmMotorPosIncrements;
             }
 
         }
