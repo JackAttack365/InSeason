@@ -13,7 +13,7 @@ public class Claw extends SubSystem {
 
 
     public static final double CLOSED = 0;
-    public static final double OPEN = 0.1;
+    public static final double OPEN = 0.11;
 
     public Claw(Config config) {
         super(config);
@@ -68,8 +68,6 @@ public class Claw extends SubSystem {
         clawServo2.setPosition(currPosition);
         config.telemetry.addData("currPosition", currPosition);
 
-
     }
 
-
-    }
+}
