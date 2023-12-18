@@ -11,7 +11,7 @@ public class ParkRedRight extends Auto {
         waitForStart();
 
         moveForward(100);
-        strafeRight(2200);
+        strafeRight(2700);
     }
 }
 

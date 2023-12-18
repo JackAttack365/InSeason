@@ -15,7 +15,7 @@ public class Claw extends SubSystem {
 
 
     public static final double CLAW_2_CLOSED = 0.1;
-    public static final double CLAW_1_CLOSED = 0.1;
+    public static final double CLAW_1_CLOSED = 0.13;
     public static final double CLAW_1_OPEN = 0;
     public static final double CLAW_2_OPEN = 0;
 
@@ -50,10 +50,12 @@ public class Claw extends SubSystem {
         // todo: tune position values
         if (isOneController) {
             if (config.gamePad1.left_bumper) {
-                currPositionClaw2 = CLAW_1_OPEN;
+                currPositionClaw1 = CLAW_1_OPEN;
+                currPositionClaw2 = CLAW_2_OPEN;
             }
             if (config.gamePad1.right_bumper) {
                 currPositionClaw2 = CLAW_2_CLOSED;
+                currPositionClaw1 = CLAW_1_CLOSED;
             }
         } else {
             if (config.gamePad2.left_bumper) {
@@ -72,7 +74,7 @@ public class Claw extends SubSystem {
         // Holds torque on game piece without moving
         clawServo1.setPosition(currPositionClaw1);
         clawServo2.setPosition(currPositionClaw2);
-        config.telemetry.addData("currPosition", currPositionClaw1);
+        config.telemetry.addData("currPositionClaw1", currPositionClaw1);
 
 
     }

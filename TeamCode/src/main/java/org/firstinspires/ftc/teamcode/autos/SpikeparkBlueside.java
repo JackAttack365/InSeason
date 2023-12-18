@@ -2,7 +2,7 @@ package org.firstinspires.ftc.teamcode.autos;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
-@Autonomous(name="SpikeParkBlue")
+//@Autonomous(name="SpikeParkBlue")
 public class SpikeparkBlueside extends Auto{
     public int forward = 2000;
     public int sRightLeft = 900;

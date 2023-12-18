@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.autos;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.teamcode.Config;
 
@@ -13,9 +14,9 @@ public abstract class Auto extends LinearOpMode {
     protected DcMotor rightBackDrive;
     protected DcMotor lowerArmMotorRight;
     protected DcMotor upperArmMotor;
+    protected Servo airplaneLauncher;
 
     public double movementSpeed = 0.75;
-
     private final int lowerArmPositionScore = -2064;
     private final int upperArmPositionScore = -700;
     public int somepower = 1;
@@ -30,6 +31,8 @@ public abstract class Auto extends LinearOpMode {
         //arm motors
         lowerArmMotorRight = hardwareMap.get(DcMotor.class, Config.RIGHT_LOW_ARM_MOTOR);
         upperArmMotor = hardwareMap.get(DcMotor.class, Config.UP_ARM_MOTOR);
+
+        airplaneLauncher = hardwareMap.get(Servo.class, Config.PLANE_LAUNCHER);
 
         // Most robots need the motors on one side to be reversed to drive forward.
         // When you first test your robot, push the left joystick forward
@@ -122,5 +125,7 @@ public abstract class Auto extends LinearOpMode {
 //        upperArmMotor.setPower(somepower);
     }
 
-
+    public void setPlaneLauncherCurrPosition(double position) {
+        airplaneLauncher.setPosition(position);
+    }
 }

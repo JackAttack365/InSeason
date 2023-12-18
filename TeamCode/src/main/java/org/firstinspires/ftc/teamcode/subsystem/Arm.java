@@ -11,14 +11,20 @@ public class Arm extends SubSystem {
     private DcMotor upperArmMotor;
 
     private int upperArmMotorTargetPos = 0;
-    private int upperArmMotorPosIncrements = 50;
+    private int upperArmMotorPosIncrements = 100;
     // TODO: Tune Values
-    private int lowerArmEncoderPositionScore = -2064;
-    private int lowerArmEncoderPositionGrab = 0;
+    private int lowerArmLeftEncoderPositionScore = -2064;
+    private int lowerArmLeftEncoderPositionGrab = 0;
+    private int lowerArmLeftEncoderPositionHang = 0;
+    private int lowerArmRightEncoderPositionScore = -2064;
+    private int lowerArmRightEncoderPositionGrab = 0;
+    private int lowerArmRightEncoderPositionHang = 0;
     //TODO: TUNE
     private int upperArmEncoderPositionScore = -700;
     private int upperArmEncoderPositionGrab = 0;
-    private double upperArmPower = 0.3;
+    private int upperArmEncoderPositionHang = 0;
+    private int upperArmMotorEndPos = 0;
+    private double upperArmPower = 1;
     public Arm (Config config) {
         super(config);
     }
@@ -42,11 +48,11 @@ public class Arm extends SubSystem {
         // TODO: test arm
         // TODO: TUNE SPEED
         if(isOneController) {
-            if (config.gamePad1.dpad_down){
+            if (config.gamePad1.x){
                 lowerArmMotorRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
                 lowerArmMotorRight.setPower(-1);
 
-            } else if (config.gamePad1.dpad_up){
+            } else if (config.gamePad1.y){
                 lowerArmMotorRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
                 lowerArmMotorRight.setPower(1);
 
@@ -56,18 +62,19 @@ public class Arm extends SubSystem {
 
             }
 
-            if (config.gamePad1.x) {
-                upperArmMotorTargetPos = upperArmMotor.getCurrentPosition()+10;
+            if (config.gamePad1.dpad_up) {
+                upperArmMotorTargetPos = upperArmMotor.getCurrentPosition()+upperArmMotorPosIncrements;
 
-            } else if (config.gamePad1.y) {
-                upperArmMotorTargetPos = upperArmMotor.getCurrentPosition()-10;
+            } else if (config.gamePad1.dpad_down) {
+                upperArmMotorTargetPos = upperArmMotor.getCurrentPosition()-upperArmMotorPosIncrements;
             }
 
         } else {
 
             double maxSpeed = 1;
+            double speed = 1 - ((config.gamePad2.right_trigger + config.gamePad2.left_trigger) / 2);
 
-            double lowerArmSpeed = config.gamePad2.left_stick_y / 1.5;
+            double lowerArmSpeed = (config.gamePad2.left_stick_y / 1.5) * speed;
             if (lowerArmSpeed > maxSpeed) {
                 lowerArmSpeed = maxSpeed;
             }
@@ -75,11 +82,13 @@ public class Arm extends SubSystem {
             lowerArmMotorRight.setPower(lowerArmSpeed);
 
 
-            if (config.gamePad2.dpad_up) {
+            if (config.gamePad2.y) {
                 upperArmMotorTargetPos = upperArmMotor.getCurrentPosition()-upperArmMotorPosIncrements;
 
-            } else if (config.gamePad2.dpad_down) {
-                upperArmMotorTargetPos = upperArmMotor.getCurrentPosition()+upperArmMotorPosIncrements;
+            } else if (config.gamePad2.x) {
+                if (!(upperArmMotor.getCurrentPosition() > upperArmMotorEndPos)) {
+                    upperArmMotorTargetPos = upperArmMotor.getCurrentPosition() + upperArmMotorPosIncrements;
+                }
             }
 
         }
@@ -94,6 +103,6 @@ public class Arm extends SubSystem {
         upperArmMotor.setPower(upperArmPower);
 
         // Telemetry to help tune encoder values
-        //config.telemetry.addData("Lower Arm Motor Encoder Position", lowerArmMotorRight.getCurrentPosition());
+        config.telemetry.addData("Upper Arm Motor Encoder Position", upperArmMotor.getCurrentPosition());
     }
 }

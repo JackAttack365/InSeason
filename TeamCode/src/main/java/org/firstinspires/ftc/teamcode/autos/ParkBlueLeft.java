@@ -10,6 +10,7 @@ public class ParkBlueLeft extends Auto{
         waitForStart();
 
         moveForward(100);
-        strafeLeft(2200);
+        strafeLeft(2700);
+
     }
 }

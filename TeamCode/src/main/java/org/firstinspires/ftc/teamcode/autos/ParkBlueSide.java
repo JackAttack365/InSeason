@@ -2,7 +2,7 @@ package org.firstinspires.ftc.teamcode.autos;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
-@Autonomous(name = "BackParkBlue")
+//@Autonomous(name = "BackParkBlue")
 public class ParkBlueSide extends Auto{
     // TODO: tune values
     private int firstDriveForward = 1810;
