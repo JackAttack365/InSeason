@@ -16,7 +16,7 @@ public abstract class Auto extends LinearOpMode {
     protected DcMotor upperArmMotor;
     protected Servo airplaneLauncher;
 
-    public double movementSpeed = 0.75;
+    public double defaultMovementSpeed = 0.75;
     private final int lowerArmPositionScore = -2064;
     private final int upperArmPositionScore = -700;
     public int somepower = 1;
@@ -47,11 +47,79 @@ public abstract class Auto extends LinearOpMode {
 
 
     }
+    public void moveBackward(long milliseconds, double speed) {
+        leftFrontDrive.setPower(-speed);
+        leftBackDrive.setPower(-speed);
+        rightFrontDrive.setPower(-speed);
+        rightBackDrive.setPower(-speed);
+        sleep(milliseconds);
+        leftFrontDrive.setPower(0);
+        leftBackDrive.setPower(0);
+        rightFrontDrive.setPower(0);
+        rightBackDrive.setPower(0);
+    }
+    public void strafeRight(long milliseconds, double speed) {
+        leftFrontDrive.setPower(speed);
+        leftBackDrive.setPower(-speed);
+        rightFrontDrive.setPower(-speed);
+        rightBackDrive.setPower(speed);
+        sleep(milliseconds);
+        leftFrontDrive.setPower(0);
+        leftBackDrive.setPower(0);
+        rightFrontDrive.setPower(0);
+        rightBackDrive.setPower(0);
+    }
+    public void strafeLeft(long milliseconds, double speed) {
+        leftFrontDrive.setPower(-speed);
+        leftBackDrive.setPower(speed);
+        rightFrontDrive.setPower(speed);
+        rightBackDrive.setPower(-speed);
+        sleep(milliseconds);
+        leftFrontDrive.setPower(0);
+        leftBackDrive.setPower(0);
+        rightFrontDrive.setPower(0);
+        rightBackDrive.setPower(0);
+    }
+    public void moveForward(long milliseconds, double speed) {
+        leftFrontDrive.setPower(speed);
+        leftBackDrive.setPower(speed);
+        rightFrontDrive.setPower(speed);
+        rightBackDrive.setPower(speed);
+        sleep(milliseconds);
+        leftFrontDrive.setPower(0);
+        leftBackDrive.setPower(0);
+        rightFrontDrive.setPower(0);
+        rightBackDrive.setPower(0);
+    }
+
+    public void spinCounterClockwise(long milliseconds, double speed) {
+        leftFrontDrive.setPower(-speed);
+        leftBackDrive.setPower(-speed);
+        rightFrontDrive.setPower(speed);
+        rightBackDrive.setPower(speed);
+        sleep(milliseconds);
+        leftFrontDrive.setPower(0);
+        leftBackDrive.setPower(0);
+        rightFrontDrive.setPower(0);
+        rightBackDrive.setPower(0);
+    }
+    public void spinClockwise(long milliseconds, double speed) {
+        leftFrontDrive.setPower(speed);
+        leftBackDrive.setPower(speed);
+        rightFrontDrive.setPower(-speed);
+        rightBackDrive.setPower(-speed);
+        sleep(milliseconds);
+        leftFrontDrive.setPower(0);
+        leftBackDrive.setPower(0);
+        rightFrontDrive.setPower(0);
+        rightBackDrive.setPower(0);
+    }
+
     public void moveBackward(long milliseconds) {
-        leftFrontDrive.setPower(-movementSpeed);
-        leftBackDrive.setPower(-movementSpeed);
-        rightFrontDrive.setPower(-movementSpeed);
-        rightBackDrive.setPower(-movementSpeed);
+        leftFrontDrive.setPower(-defaultMovementSpeed);
+        leftBackDrive.setPower(-defaultMovementSpeed);
+        rightFrontDrive.setPower(-defaultMovementSpeed);
+        rightBackDrive.setPower(-defaultMovementSpeed);
         sleep(milliseconds);
         leftFrontDrive.setPower(0);
         leftBackDrive.setPower(0);
@@ -59,10 +127,10 @@ public abstract class Auto extends LinearOpMode {
         rightBackDrive.setPower(0);
     }
     public void strafeRight(long milliseconds) {
-        leftFrontDrive.setPower(movementSpeed);
-        leftBackDrive.setPower(-movementSpeed);
-        rightFrontDrive.setPower(-movementSpeed);
-        rightBackDrive.setPower(movementSpeed);
+        leftFrontDrive.setPower(defaultMovementSpeed);
+        leftBackDrive.setPower(-defaultMovementSpeed);
+        rightFrontDrive.setPower(-defaultMovementSpeed);
+        rightBackDrive.setPower(defaultMovementSpeed);
         sleep(milliseconds);
         leftFrontDrive.setPower(0);
         leftBackDrive.setPower(0);
@@ -70,10 +138,10 @@ public abstract class Auto extends LinearOpMode {
         rightBackDrive.setPower(0);
     }
     public void strafeLeft(long milliseconds) {
-        leftFrontDrive.setPower(-movementSpeed);
-        leftBackDrive.setPower(movementSpeed);
-        rightFrontDrive.setPower(movementSpeed);
-        rightBackDrive.setPower(-movementSpeed);
+        leftFrontDrive.setPower(-defaultMovementSpeed);
+        leftBackDrive.setPower(defaultMovementSpeed);
+        rightFrontDrive.setPower(defaultMovementSpeed);
+        rightBackDrive.setPower(-defaultMovementSpeed);
         sleep(milliseconds);
         leftFrontDrive.setPower(0);
         leftBackDrive.setPower(0);
@@ -81,10 +149,10 @@ public abstract class Auto extends LinearOpMode {
         rightBackDrive.setPower(0);
     }
     public void moveForward(long milliseconds) {
-        leftFrontDrive.setPower(movementSpeed);
-        leftBackDrive.setPower(movementSpeed);
-        rightFrontDrive.setPower(movementSpeed);
-        rightBackDrive.setPower(movementSpeed);
+        leftFrontDrive.setPower(defaultMovementSpeed);
+        leftBackDrive.setPower(defaultMovementSpeed);
+        rightFrontDrive.setPower(defaultMovementSpeed);
+        rightBackDrive.setPower(defaultMovementSpeed);
         sleep(milliseconds);
         leftFrontDrive.setPower(0);
         leftBackDrive.setPower(0);
@@ -93,10 +161,10 @@ public abstract class Auto extends LinearOpMode {
     }
 
     public void spinCounterClockwise(long milliseconds) {
-        leftFrontDrive.setPower(-movementSpeed);
-        leftBackDrive.setPower(-movementSpeed);
-        rightFrontDrive.setPower(movementSpeed);
-        rightBackDrive.setPower(movementSpeed);
+        leftFrontDrive.setPower(-defaultMovementSpeed);
+        leftBackDrive.setPower(-defaultMovementSpeed);
+        rightFrontDrive.setPower(defaultMovementSpeed);
+        rightBackDrive.setPower(defaultMovementSpeed);
         sleep(milliseconds);
         leftFrontDrive.setPower(0);
         leftBackDrive.setPower(0);
@@ -104,10 +172,10 @@ public abstract class Auto extends LinearOpMode {
         rightBackDrive.setPower(0);
     }
     public void spinClockwise(long milliseconds) {
-        leftFrontDrive.setPower(movementSpeed);
-        leftBackDrive.setPower(movementSpeed);
-        rightFrontDrive.setPower(-movementSpeed);
-        rightBackDrive.setPower(-movementSpeed);
+        leftFrontDrive.setPower(defaultMovementSpeed);
+        leftBackDrive.setPower(defaultMovementSpeed);
+        rightFrontDrive.setPower(-defaultMovementSpeed);
+        rightBackDrive.setPower(-defaultMovementSpeed);
         sleep(milliseconds);
         leftFrontDrive.setPower(0);
         leftBackDrive.setPower(0);
