@@ -15,11 +15,15 @@ public abstract class Auto extends LinearOpMode {
     protected DcMotor lowerArmMotorRight;
     protected DcMotor upperArmMotor;
     protected Servo airplaneLauncher;
-
+    protected int forwardOneSquare = 1000;
+    protected int backwardOneSquare = 1000;
+    protected int strafeRightOneSquare = 1000;
+    protected int strafeLeftOneSquare = 1000;
+    protected int turn90 = 1000;
+    protected int turn180 = 2000;
     public double defaultMovementSpeed = 0.75;
     private final int lowerArmPositionScore = -2064;
     private final int upperArmPositionScore = -700;
-    public int somepower = 1;
 
     // Initialize. Similar to SubSystem.init();
     protected void initMotors() {

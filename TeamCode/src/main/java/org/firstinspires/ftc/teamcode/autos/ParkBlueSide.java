@@ -16,7 +16,6 @@ public class ParkBlueSide extends Auto{
     public void runOpMode() throws InterruptedException {
         // INIT CODE
         initMotors();
-
         waitForStart();
 
         // Path
