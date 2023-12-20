@@ -33,5 +33,9 @@ public class TeleOpManual extends LinearOpMode {
         }
 
     }
+
+    public void aSleep(long millis) {
+        super.sleep(millis);
+    }
 }
 
