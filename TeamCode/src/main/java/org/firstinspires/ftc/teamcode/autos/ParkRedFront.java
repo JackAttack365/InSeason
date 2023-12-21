@@ -4,14 +4,14 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 @Autonomous(name = "ParkRedRight")
 
-public class ParkRedRight extends Auto {
-    @Override
+public class ParkRedFront extends Auto {
+
     public void runOpMode() throws InterruptedException {
         initMotors();
         waitForStart();
 
-        moveForward(100);
-        strafeRight(2700);
+        moveForward(forwardOneSquare/4);
+        strafeRight(strafeRightOneSquare*2);
     }
 }
 
