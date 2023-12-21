@@ -1,16 +1,15 @@
 package org.firstinspires.ftc.teamcode.autos;
 
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-
-@Autonomous(name = "ParkBlueLeft")
-public class ParkBlueFront extends Auto{
+public class ParkBlueRight extends Auto{
     @Override
     public void runOpMode() throws InterruptedException {
         initMotors();
         waitForStart();
 
-        moveForward(forwardOneSquare/4);
+        moveForward(forwardOneSquare*2);
+        spinCounterClockwise(turn90);
+        moveForward(forwardOneSquare*3);
         strafeLeft(strafeLeftOneSquare*2);
-
+        moveForward(forwardOneSquare/2);
     }
 }

@@ -1,19 +1,19 @@
 package org.firstinspires.ftc.teamcode.autos;
 
-public class BackdropParkRedBack extends Auto{
+public class BackdropParkRedRight extends Auto{
     @Override
     public void runOpMode() throws InterruptedException {
         initMotors();
         waitForStart();
 
         moveForward(forwardOneSquare*2);
-        spinCounterClockwise(turn90);
+        spinClockwise(turn90);
         moveForward(forwardOneSquare*3);
-        strafeLeft(strafeLeftOneSquare);
-        spinCounterClockwise(turn180);
+        strafeRight(strafeRightOneSquare);
+        spinClockwise(turn180);
         moveBackward(backwardOneSquare/4);
         //place pixels on backdrop
-        strafeRight(strafeRightOneSquare);
+        strafeLeft(strafeLeftOneSquare);
         moveBackward(backwardOneSquare/2);
     }
 }
