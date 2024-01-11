@@ -17,16 +17,18 @@ public class Arm extends SubSystem {
     private int lastLowerArmRightPos = 0;
     private int upperArmMotorPosIncrements = 100;
     // TODO: Tune Values
-    private int lowerArmLeftEncoderPositionScore = 2144;
+    private int lowerArmLeftEncoderPositionScore = 2550;
     private int lowerArmLeftEncoderPositionGrab = 0;
-    private int lowerArmLeftEncoderPositionHang = 0;
-    private int lowerArmRightEncoderPositionScore = 2161;
+    private int lowerArmLeftEncoderPositionHang = 1963;
+    private int lowerArmRightEncoderPositionScore = 2550;
     private int lowerArmRightEncoderPositionGrab = 0;
-    private int lowerArmRightEncoderPositionHang = 0;
+    private int lowerArmRightEncoderPositionHang = 1963;
     //TODO: TUNE
-    private int upperArmEncoderPositionScore = -1900;
-    private int upperArmEncoderPositionGrab = 2398;
-    private int upperArmEncoderPositionHang = 2820;
+    private int upperArmEncoderPositionScore = -2036;
+
+
+    private int upperArmEncoderPositionGrab = 0;
+    private int upperArmEncoderPositionHang = -2080;
     private int upperArmMotorEndPos = 0;
     private double upperArmPower = 1;
     private double lowerArmPower = 1;
@@ -90,6 +92,8 @@ public class Arm extends SubSystem {
             lowerArmMotorRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
             lowerArmMotorRight.setPower(lowerArmSpeed);
 
+            lowerArmMotorLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+
 
             if (config.gamePad2.y) {
                 upperArmMotorTargetPos = upperArmMotor.getCurrentPosition()-upperArmMotorPosIncrements;
@@ -104,20 +108,20 @@ public class Arm extends SubSystem {
                 storeCurrentArmPosition();
                 // Moves the arm to scoring position
                 runLowerArmToPosition(lowerArmLeftEncoderPositionScore, lowerArmRightEncoderPositionScore);
-                teleOpManual.aSleep(10000);
+                teleOpManual.aSleep(1000);
                 upperArmMotorTargetPos = upperArmEncoderPositionScore;
             } else if (config.gamePad2.dpad_down) {
                 storeCurrentArmPosition();
                 // Moves the arm to grabbing position
-                runLowerArmToPosition(lowerArmLeftEncoderPositionGrab, lowerArmRightEncoderPositionGrab);
-                teleOpManual.aSleep(1000);
                 upperArmMotorTargetPos = upperArmEncoderPositionGrab;
+                //teleOpManual.aSleep(1000);
+                runLowerArmToPosition(0, 0);
             } else if (config.gamePad2.dpad_left) {
                 storeCurrentArmPosition();
                 // Moves the arm to hanging position
-                upperArmMotorTargetPos = upperArmEncoderPositionHang;
-                teleOpManual.aSleep(1000);
                 runLowerArmToPosition(lowerArmLeftEncoderPositionHang, lowerArmRightEncoderPositionHang);
+                teleOpManual.aSleep(1000);
+                upperArmMotorTargetPos = upperArmEncoderPositionHang;
             }
 
             if (config.gamePad2.back) {
