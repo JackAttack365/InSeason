@@ -13,17 +13,20 @@ public abstract class Auto extends LinearOpMode {
     protected DcMotor rightFrontDrive;
     protected DcMotor rightBackDrive;
     protected DcMotor lowerArmMotorRight;
+    protected DcMotor lowerArmMotorLeft;
     protected DcMotor upperArmMotor;
+    protected Servo clawServo1;
+    protected Servo clawServo2;
     protected Servo airplaneLauncher;
-    protected int forwardOneSquare = 1000;
-    protected int backwardOneSquare = 1000;
-    protected int strafeRightOneSquare = 1000;
-    protected int strafeLeftOneSquare = 1000;
-    protected int turn90 = 1000;
-    protected int turn180 = 2000;
+    protected int forwardOneSquare = 880;
+    protected int backwardOneSquare = 880;
+    protected int strafeRightOneSquare = 1190;
+    protected int strafeLeftOneSquare = 1190;
+    protected int turn90 = 940;
+    protected int turn180 = 1880;
     public double defaultMovementSpeed = 0.75;
-    private final int lowerArmPositionScore = -2064;
-    private final int upperArmPositionScore = -700;
+    private final int lowerArmPositionScore = 2550;
+    private final int upperArmPositionScore = -2036;
 
     // Initialize. Similar to SubSystem.init();
     protected void initMotors() {
@@ -34,9 +37,13 @@ public abstract class Auto extends LinearOpMode {
 
         //arm motors
         lowerArmMotorRight = hardwareMap.get(DcMotor.class, Config.RIGHT_LOW_ARM_MOTOR);
+        lowerArmMotorLeft = hardwareMap.get(DcMotor.class, Config.LEFT_LOW_ARM_MOTOR);
         upperArmMotor = hardwareMap.get(DcMotor.class, Config.UP_ARM_MOTOR);
 
         airplaneLauncher = hardwareMap.get(Servo.class, Config.PLANE_LAUNCHER);
+
+        clawServo1 = hardwareMap.get(Servo.class, Config.CLAW_SERVO_1);
+        clawServo2 = hardwareMap.get(Servo.class, Config.CLAW_SERVO_2);
 
         // Most robots need the motors on one side to be reversed to drive forward.
         // When you first test your robot, push the left joystick forward
@@ -186,15 +193,17 @@ public abstract class Auto extends LinearOpMode {
         rightFrontDrive.setPower(0);
         rightBackDrive.setPower(0);
     }
-    public void score()
-    {
-//        lowerArmMotorRight.setTargetPosition(lowerArmPositionScore);
-//        lowerArmMotorRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-//        lowerArmMotorRight.setPower(somepower);
-//
-//        upperArmMotor.setTargetPosition(upperArmPositionScore);
-//        upperArmMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-//        upperArmMotor.setPower(somepower);
+    public void score(){
+        lowerArmMotorRight.setTargetPosition(lowerArmPositionScore);
+        lowerArmMotorLeft.setTargetPosition(lowerArmPositionScore);
+        upperArmMotor.setTargetPosition(upperArmPositionScore);
+        lowerArmMotorLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        lowerArmMotorRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        upperArmMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        lowerArmMotorRight.setPower(1);
+        lowerArmMotorLeft.setPower(1);
+        sleep(1000);
+        upperArmMotor.setPower(1);
     }
 
     public void setPlaneLauncherCurrPosition(double position) {
