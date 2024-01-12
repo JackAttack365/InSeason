@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.teamcode.Config;
+import org.firstinspires.ftc.teamcode.subsystem.Claw;
 
 // Auto superclass. Has useful movement methods that can be used in all of our autos
 public abstract class Auto extends LinearOpMode {
@@ -59,7 +60,12 @@ public abstract class Auto extends LinearOpMode {
         lowerArmMotorRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         upperArmMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
-
+        new Thread(() -> {
+            waitForStart();
+            while(opModeIsActive()) {
+                airplaneLauncher.setPosition(0.6);
+            }
+        }).start();
     }
     public void moveBackward(long milliseconds, double speed) {
         leftFrontDrive.setPower(-speed);
