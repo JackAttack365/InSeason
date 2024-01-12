@@ -9,16 +9,5 @@ public class Debugging extends Auto{
     public void runOpMode() throws InterruptedException {
         initMotors();
         waitForStart();
-//        moveBackward(backwardOneSquare);
-//        sleep(3000);
-//        moveForward(forwardOneSquare);
-//        sleep(3000);
-//        strafeLeft(strafeLeftOneSquare);
-//        sleep(3000);
-//        strafeRight(strafeRightOneSquare);
-//        sleep(3000);
-        spinCounterClockwise(turn90);
-        sleep(3000);
-        spinCounterClockwise(turn180);
     }
 }
