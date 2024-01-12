@@ -39,6 +39,9 @@ public abstract class Auto extends LinearOpMode {
         lowerArmMotorRight = hardwareMap.get(DcMotor.class, Config.RIGHT_LOW_ARM_MOTOR);
         lowerArmMotorLeft = hardwareMap.get(DcMotor.class, Config.LEFT_LOW_ARM_MOTOR);
         upperArmMotor = hardwareMap.get(DcMotor.class, Config.UP_ARM_MOTOR);
+        lowerArmMotorRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        lowerArmMotorLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        upperArmMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
         airplaneLauncher = hardwareMap.get(Servo.class, Config.PLANE_LAUNCHER);
 

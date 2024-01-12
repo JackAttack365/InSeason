@@ -49,9 +49,9 @@ public class Arm extends SubSystem {
         lowerArmMotorLeft = config.hardwareMap.get(DcMotor.class, Config.LEFT_LOW_ARM_MOTOR);
         upperArmMotor = config.hardwareMap.get(DcMotor.class, Config.UP_ARM_MOTOR);
 
-        upperArmMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        lowerArmMotorRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        lowerArmMotorLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+//        upperArmMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+//        lowerArmMotorRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+//        lowerArmMotorLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
     }
 
     @Override
