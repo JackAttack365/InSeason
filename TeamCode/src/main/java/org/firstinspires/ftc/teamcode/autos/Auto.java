@@ -61,7 +61,7 @@ public abstract class Auto extends LinearOpMode {
         upperArmMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
         new Thread(() -> {
-            waitForStart();
+            //waitForStart();
             while(opModeIsActive()) {
                 airplaneLauncher.setPosition(0.6);
             }
