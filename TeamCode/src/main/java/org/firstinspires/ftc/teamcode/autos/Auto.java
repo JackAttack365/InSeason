@@ -60,12 +60,13 @@ public abstract class Auto extends LinearOpMode {
         lowerArmMotorRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         upperArmMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
-        new Thread(() -> {
-            //waitForStart();
-            while(opModeIsActive()) {
-                airplaneLauncher.setPosition(0.6);
-            }
-        }).start();
+//        new Thread(() -> {
+//            //waitForStart();
+//            double position = airplaneLauncher.getPosition();
+//            while(opModeIsActive()) {
+//                airplaneLauncher.setPosition(position);
+//            }
+//        }).start();
     }
     public void moveBackward(long milliseconds, double speed) {
         leftFrontDrive.setPower(-speed);

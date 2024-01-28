@@ -32,7 +32,7 @@ public class Intake extends SubSystem {
             }
         } else {
             if (config.gamePad2.a) {
-                intake.setPower(1);
+                intake.setPower(1 - ((config.gamePad2.right_trigger + config.gamePad2.left_trigger) / 2));
             } else {
                 intake.setPower(0);
             }

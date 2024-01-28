@@ -35,9 +35,9 @@ public class BackdropParkRedRight extends Auto{
         score();
         sleep(1000);
         holdingTorque.set(false);
-        sleep(3000);
+        sleep(2000);
         moveForward(forwardOneSquare/8);
         strafeLeft((long)(strafeLeftOneSquare*1.5));
-        moveBackward(backwardOneSquare/2);
+        moveBackward(backwardOneSquare/5);
     }
 }

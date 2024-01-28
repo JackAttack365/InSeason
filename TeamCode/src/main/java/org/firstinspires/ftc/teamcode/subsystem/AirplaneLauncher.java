@@ -17,7 +17,7 @@ public class AirplaneLauncher extends SubSystem {
     private Servo airplaneServo;
     private Servo planeClamp;
 
-    private double currPosition = 0.6;
+    private double currPosition = 0.1;
 
     @Override
     public void init() {
@@ -51,11 +51,13 @@ public class AirplaneLauncher extends SubSystem {
 //                while (i < 10000000) {
 //                    i++;
 //                }
-                currPosition = 2;
+                currPosition = 0.3;
             }
         }
 
         airplaneServo.setPosition(currPosition);
+
+        config.telemetry.addData("Plane Launcher Pos:", airplaneServo.getPosition());
     }
 }
 

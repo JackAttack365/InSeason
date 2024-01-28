@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.subsystem;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 
+import org.checkerframework.checker.units.qual.C;
 import org.firstinspires.ftc.teamcode.Config;
 import org.firstinspires.ftc.teamcode.TeleOpManual;
 
@@ -25,6 +26,8 @@ public class Arm extends SubSystem {
     private int lowerArmRightEncoderPositionHang = 1963;
     //TODO: TUNE
     private int upperArmEncoderPositionScore = -2036;
+
+    private Claw claw = new Claw(config);
 
 
     private int upperArmEncoderPositionGrab = 0;
@@ -90,7 +93,7 @@ public class Arm extends SubSystem {
                 lowerArmSpeed = maxSpeed;
             }
             lowerArmMotorRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-            lowerArmMotorRight.setPower(lowerArmSpeed);
+            lowerArmMotorRight.setPower(-lowerArmSpeed);
 
             lowerArmMotorLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
@@ -105,6 +108,7 @@ public class Arm extends SubSystem {
             }
 
             if (config.gamePad2.dpad_up) {
+                claw.closeClaw();
                 storeCurrentArmPosition();
                 // Moves the arm to scoring position
                 runLowerArmToPosition(lowerArmLeftEncoderPositionScore, lowerArmRightEncoderPositionScore);
@@ -113,9 +117,9 @@ public class Arm extends SubSystem {
             } else if (config.gamePad2.dpad_down) {
                 storeCurrentArmPosition();
                 // Moves the arm to grabbing position
+                claw.openClaw();
                 upperArmMotorTargetPos = upperArmEncoderPositionGrab;
-                //teleOpManual.aSleep(1000);
-                runLowerArmToPosition(0, 0);
+                //runLowerArmToPosition(0, 0);
             } else if (config.gamePad2.dpad_left) {
                 storeCurrentArmPosition();
                 // Moves the arm to hanging position

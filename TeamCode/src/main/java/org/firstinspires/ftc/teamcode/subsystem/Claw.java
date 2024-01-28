@@ -16,8 +16,8 @@ public class Claw extends SubSystem {
 
     public static final double CLAW_2_CLOSED = 0.1;
     public static final double CLAW_1_CLOSED = 0.13;
-    public static final double CLAW_1_OPEN = 0;
-    public static final double CLAW_2_OPEN = 0;
+    public static final double CLAW_1_OPEN = 0.01;
+    public static final double CLAW_2_OPEN = 0.01;
 
     public Claw(Config config) {
         super(config);
@@ -79,5 +79,15 @@ public class Claw extends SubSystem {
 
     }
 
-
+    public void closeClaw() {
+        currPositionClaw2 = CLAW_2_CLOSED;
+        currPositionClaw1 = CLAW_1_CLOSED;
     }
+
+    public void openClaw() {
+        currPositionClaw2 = CLAW_2_OPEN;
+        currPositionClaw1 = CLAW_1_OPEN;
+    }
+
+
+}
