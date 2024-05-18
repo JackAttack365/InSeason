@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import org.firstinspires.ftc.teamcode.subsystem.AirplaneLauncher;
 import org.firstinspires.ftc.teamcode.subsystem.Arm;
 import org.firstinspires.ftc.teamcode.subsystem.Claw;
-import org.firstinspires.ftc.teamcode.subsystem.Drive;
+import org.firstinspires.ftc.teamcode.subsystem.DriveTrain;
 import org.firstinspires.ftc.teamcode.subsystem.Intake;
 import org.firstinspires.ftc.teamcode.subsystem.SubSystem;
 
@@ -20,7 +20,7 @@ public class ManualRobot {
     public ManualRobot(Config cfg, boolean isOneController) {
         config = cfg;
         // Register the subsystem. System will not work if it's not registered
-        subSystems.add(new Drive(config, isOneController));
+        subSystems.add(new DriveTrain(config, isOneController));
         subSystems.add(new Arm(config, isOneController));
         subSystems.add(new Claw(config, isOneController));
         subSystems.add(new Intake(config, isOneController));
