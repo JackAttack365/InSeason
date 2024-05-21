@@ -21,15 +21,6 @@ public class Config {
     public static final String RIGHT_BACK_DRIVE = "rightBackDrive";
     public static final String LEFT_FRONT_DRIVE = "leftFrontDrive";
     public static final String LEFT_BACK_DRIVE = "leftBackDrive";
-    // Scoring Mechanism
-    public static final String INTAKE_MOTOR = "intakeMotor";
-    public static final  String RIGHT_LOW_ARM_MOTOR = "lowerArmMotorRight";
-    public static final  String LEFT_LOW_ARM_MOTOR = "lowerArmMotorLeft";
-    public static final String UP_ARM_MOTOR = "upperArmMotor";
-    public static final String CLAW_SERVO_1 = "clawServo1";
-    public static final String CLAW_SERVO_2 = "clawServo2";
-    public static final String PLANE_CLAMP = "planeClamp";
-    public static final String PLANE_LAUNCHER = "launcherServo";
 
     // Current game runtime
     private ElapsedTime runtime = new ElapsedTime();
