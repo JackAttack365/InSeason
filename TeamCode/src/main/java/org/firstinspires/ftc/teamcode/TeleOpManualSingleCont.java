@@ -19,6 +19,7 @@ public class TeleOpManualSingleCont extends LinearOpMode {
         manualRobot = new ManualRobot(config, true);
         // Initialize all subsystems
         manualRobot.init();
+        
         waitForStart();
 
         // Main Loop

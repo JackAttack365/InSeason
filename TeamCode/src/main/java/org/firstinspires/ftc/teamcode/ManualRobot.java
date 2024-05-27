@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode;
 
 import org.firstinspires.ftc.teamcode.subsystem.DriveTrain;
+import org.firstinspires.ftc.teamcode.subsystem.IMU;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -16,6 +17,7 @@ public class ManualRobot {
         config = cfg;
         // Register the subsystem. System will not work if it's not registered
         subSystems.add(new DriveTrain(config, isOneController));
+        subSystems.add(new IMU(config, isOneController));
     }
 
     // Initialize each subsystem

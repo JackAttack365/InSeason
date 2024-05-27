@@ -20,10 +20,12 @@ public class DriveTrain extends SubSystem {
         super(cfg);
     }
 
+    @Override
     public DriveTrain(Config cfg, boolean isOneController) {
         super(cfg, isOneController);
     }
 
+    @Override
     public void init() {
 
         // Initialize the hardware variables. Note that the strings used here must correspond
