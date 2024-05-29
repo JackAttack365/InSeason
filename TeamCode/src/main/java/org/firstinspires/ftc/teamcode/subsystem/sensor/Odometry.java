@@ -3,14 +3,35 @@ package org.firstinspires.ftc.teamcode.subsystem;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 
 import org.firstinspires.ftc.teamcode.Config;
+import org.firstinspires.ftc.teamcode.Config.ROBOT_WIDTH;
+
+import org.firstinspires.ftc.teamcode.subsystem.sensor.IMU;
+
+import org.firstinspires.ftc.teamcode.util.OpModeType;
+
+import org.firstinspires.ftc.teamcode.util.trajectory.Pose2d;
 
 public class Odometry extends SubSystem {
 
-    private DcMotorEx parallelLeft = null;
-    private DcMotorEx parallelRight = null;
-    private DcMotorEx perpendicular = null;
+    private DcMotorEx parL = null;
+    private DcMotorEx parR = null;
+    private DcMotorEx perp = null;
 
     private Pose2d startPose = null;
+
+    public double x = 0;
+    public double y = 0;
+    public double heading = 0;
+
+    int lastParLPos = 0;
+    int lastParRPos = 0;
+    int lastPerpPos = 0;
+
+    public final int TICKS_PER_REV = 2000;
+    public final int WHEEL_DIAMETER = 5;
+    public final int TICKS_PER_INCH = TICKS_PER_REV*WHEEL_DIAMETER;
+
+    public final double ROBOT_WIDTH = Config.ROBOT_WIDTH;
 
     public Odometry(Config cfg) {
         super(cfg);
@@ -22,9 +43,9 @@ public class Odometry extends SubSystem {
     
     @Override
     public void init(Pose2d getStartPose) {
-        parallelLeft = config.hardwareMap.get(DcMotorEx.class, "parallelLeft");
-        parallelRight = config.hardwareMap.get(DcMotorEx.class, "parallelRight");
-        perpendicular = config.hardwareMap.get(DcMotorEx.class, "perpendicular");
+        parL = config.hardwareMap.get(DcMotorEx.class, "parL");
+        parR = config.hardwareMap.get(DcMotorEx.class, "parR");
+        perp = config.hardwareMap.get(DcMotorEx.class, "perp");
 
 
         this.startPose = getStartPose;
@@ -32,10 +53,61 @@ public class Odometry extends SubSystem {
 
     @Override
     public void update() {
-        config.telemetry.addData("Heading %0.2f degrees", imu.getHeading());
+        int parLPos = parL.getCurrentPosition();
+        int parRPos = parR.getCurrentPosition();
+        int perpPos = perp.getCurrentPosition();
+
+        double imuHeading = IMU.getHeading();
+
+        double deltaParL = parLPos - lastParLPos;
+        double deltaParR = parRPos - lastParRPos;
+        double deltaPerp = perpPos - lastPerpPos;
+
+        lastParLPos = parLPos;
+        lastParRPos = parRPos;
+        lastPerpPos = perpPos;
+
+        double deltaParLInInches = deltaParL / TICKS_PER_INCH;
+        double deltaParRInInches = deltaParR / TICKS_PER_INCH;
+        double deltaPerpInInches = deltaPerp / TICKS_PER_INCH;
+
+        double deltaForward = (deltaParLInInches + deltaParRInInches) / 2;
+        double deltaLeft = deltaPerpInInches;
+        double deltaHeading = (deltaParRInInches - deltaParLInInches) / ROBOT_WIDTH;
+
+        x += deltaForward * Math.cos(heading) + deltaLeft * Math.sin(heading);
+        y += deltaForward * Math.sin(heading) - deltaLeft * Math.cos(heading);
+
+        config.telemetry.addData("Location: %0.3f, %0.3f", x, y);
     }
 
-    public double getHeading() {
-        return imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.DEGREES);
+    @Override
+    public Pose2d update(OpModeType opMode) {
+        int parLPos = parL.getCurrentPosition();
+        int parRPos = parR.getCurrentPosition();
+        int perpPos = perp.getCurrentPosition();
+
+        double imuHeading = IMU.getHeading();
+
+        double deltaParL = parLPos - lastParLPos;
+        double deltaParR = parRPos - lastParRPos;
+        double deltaPerp = perpPos - lastPerpPos;
+
+        lastParLPos = parLPos;
+        lastParRPos = parRPos;
+        lastPerpPos = perpPos;
+
+        double deltaParLInInches = deltaParL / TICKS_PER_INCH;
+        double deltaParRInInches = deltaParR / TICKS_PER_INCH;
+        double deltaPerpInInches = deltaPerp / TICKS_PER_INCH;
+
+        double deltaForward = (deltaParLInInches + deltaParRInInches) / 2;
+        double deltaLeft = deltaPerpInInches;
+        double deltaHeading = (deltaParRInInches - deltaParLInInches) / ROBOT_WIDTH;
+
+        x += deltaForward * Math.cos(heading) + deltaLeft * Math.sin(heading);
+        y += deltaForward * Math.sin(heading) - deltaLeft * Math.cos(heading);
+
+        return new Pose2d(x,y,heading);
     }
 }

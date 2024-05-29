@@ -1,7 +1,9 @@
 package org.firstinspires.ftc.teamcode;
 
 import org.firstinspires.ftc.teamcode.subsystem.DriveTrain;
-import org.firstinspires.ftc.teamcode.subsystem.IMU;
+import org.firstinspires.ftc.teamcode.subsystem.sensor.IMU;
+import org.firstinspires.ftc.teamcode.subsystem.sensor.DistanceSensor;
+import org.firstinspires.ftc.teamcode.subsystem.sensor.Odometry;
 
 import java.util.LinkedList;
 import java.util.List;

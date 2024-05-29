@@ -22,6 +22,8 @@ public class Config {
     public static final String LEFT_FRONT_DRIVE = "leftFrontDrive";
     public static final String LEFT_BACK_DRIVE = "leftBackDrive";
 
+    public static final double ROBOT_WIDTH = 18.0; // Distance between encoders (in inches)
+
     // Current game runtime
     private ElapsedTime runtime = new ElapsedTime();
 

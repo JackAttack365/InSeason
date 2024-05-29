@@ -16,14 +16,14 @@ public class DistanceSensor extends SubSystem {
         leftDistanceSensor = config.hardwareMap.get(DistanceSensor.class,"leftDistanceSensor");
         rightDistanceSensor = config.hardwareMap.get(DistanceSensor.class,"rightDistanceSensor");
 
-        config.telemetry.addData("Left Distance: %0.0i", leftDistanceSensor.getDistance(defaultDistanceUnit));
-        config.telemetry.addData("Right Distance: %0.0i", rightDistanceSensor.getDistance(defaultDistanceUnit));
+        config.telemetry.addData("Left Distance: %0.2f", (double) leftDistanceSensor.getDistance(defaultDistanceUnit)/100);
+        config.telemetry.addData("Right Distance: %0.2f", (double) rightDistanceSensor.getDistance(defaultDistanceUnit)/100);
     }
 
     @Override
     public void update() {        
-        config.telemetry.addData("Left Distance: %0.0i", leftDistanceSensor.getDistance(defaultDistanceUnit));
-        config.telemetry.addData("Right Distance: %0.0i", rightDistanceSensor.getDistance(defaultDistanceUnit));
+        config.telemetry.addData("Left Distance: %0.2f", (double) leftDistanceSensor.getDistance(defaultDistanceUnit)/100);
+        config.telemetry.addData("Right Distance: %0.2f", (double) rightDistanceSensor.getDistance(defaultDistanceUnit)/100);
     }
 
     public int getRight(DistanceUnit distanceUnit) {
