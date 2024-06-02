@@ -48,7 +48,8 @@ public class DriveTrain extends SubSystem {
         rightFrontDrive.setDirection(DcMotor.Direction.FORWARD); // DO NOT CHANGE
         rightBackDrive.setDirection(DcMotor.Direction.FORWARD); // DO NOT CHANGE
     }
-
+    
+    @Override
     public void update() {
 
         // POV Mode uses left joystick to go forward & strafe, and right joystick to rotate.

@@ -5,8 +5,6 @@ import com.qualcomm.robotcore.hardware.DcMotorEx;
 import org.firstinspires.ftc.teamcode.Config;
 import org.firstinspires.ftc.teamcode.Config.ROBOT_WIDTH;
 
-import org.firstinspires.ftc.teamcode.subsystem.sensor.IMU;
-
 import org.firstinspires.ftc.teamcode.util.OpModeType;
 
 import org.firstinspires.ftc.teamcode.util.trajectory.Pose2d;
@@ -81,13 +79,10 @@ public class Odometry extends SubSystem {
         config.telemetry.addData("Location: %0.3f, %0.3f", x, y);
     }
 
-    @Override
     public Pose2d update(OpModeType opMode) {
         int parLPos = parL.getCurrentPosition();
         int parRPos = parR.getCurrentPosition();
         int perpPos = perp.getCurrentPosition();
-
-        double imuHeading = IMU.getHeading();
 
         double deltaParL = parLPos - lastParLPos;
         double deltaParR = parRPos - lastParRPos;
@@ -110,4 +105,6 @@ public class Odometry extends SubSystem {
 
         return new Pose2d(x,y,heading);
     }
+
+
 }

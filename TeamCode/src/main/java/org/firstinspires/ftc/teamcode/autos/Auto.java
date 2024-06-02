@@ -1,13 +1,46 @@
 package org.firstinspires.ftc.teamcode.autos;
 
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.Servo;
-
-import org.firstinspires.ftc.teamcode.Config;
 import org.firstinspires.ftc.teamcode.subsystem.DriveTrain;
+import org.firstinspires.ftc.teamcode.subsystem.sensor.IMU;
+import org.firstinspires.ftc.teamcode.subsystem.sensor.DistanceSensor;
+import org.firstinspires.ftc.teamcode.subsystem.sensor.Odometry;
 
-// Auto superclass. Has useful movement methods that can be used in all of our autos
-public abstract class Auto extends LinearOpMode {
-    
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+
+import java.util.LinkedList;
+import java.util.List;
+
+public class Auto {
+    // Config class to all hardware controls
+    Config config;
+    // List of all registered subsystems
+    List<SubSystem> subSystems = new LinkedList<>();
+
+    public int alliance = null;
+
+    // Constructor
+    public Auto(Config cfg, boolean isOneController) {
+        
+    }
+
+    // Initialize each subsystem
+    public void init() {
+        config = cfg;
+
+        alliance = 0; // 0: Blue, 1: Red
+
+        // Register the subsystem. System will not work if it's not registered
+        subSystems.add(new DriveTrain(config, isOneController));
+        subSystems.add(new IMU(config, isOneController));
+        subSystems.add(new Odometry(config, isOneController));
+        subSystems.add(new DistanceSensor(config, isOneController));
+
+        for (SubSystem sub : subSystems) {
+            sub.init();
+        }
+    }
+
+    public void auto() {
+
+    }
 }
